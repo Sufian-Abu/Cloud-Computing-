@@ -1,0 +1,1533 @@
+[root@group4-15 .euca]# euca-describe-services 
+SERVICE	tokens         	eucalyptus     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Tokens	arn:euca:eucalyptus::tokens:172.16.34.15/
+SERVICE	cloudwatch     	cloudwatch     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/CloudWatch	arn:euca:eucalyptus:cloudwatch:cloudwatch:172.16.34.15/
+SERVICE	loadbalancing  	loadbalancing  	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/LoadBalancing	arn:euca:eucalyptus:loadbalancing:loadbalancing:172.16.34.15/
+SERVICE	storage        	cluster1       	SC00           	ENABLED   	28  	http://172.16.34.15:8773/services/Storage	arn:euca:eucalyptus:cluster1:storage:SC00/
+SERVICE	cluster        	PARTI00        	CC00           	ENABLED   	28  	http://172.16.34.15:8774/axis2/services/EucalyptusCC	arn:euca:eucalyptus:PARTI00:cluster:CC00/
+SERVICE	euare          	eucalyptus     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Euare 	arn:euca:eucalyptus::euare:172.16.34.15/
+SERVICE	dns            	eucalyptus     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Dns   	arn:euca:eucalyptus::dns:172.16.34.15/
+SERVICE	reporting      	bootstrap      	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Reporting	arn:euca:bootstrap::reporting:172.16.34.15/
+SERVICE	notifications  	eucalyptus     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Notifications	arn:euca:eucalyptus::notifications:172.16.34.15/
+SERVICE	eucalyptus     	eucalyptus     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Eucalyptus	arn:euca:eucalyptus:::172.16.34.15/
+SERVICE	walrus         	walrus         	W00            	ENABLED   	28  	http://172.16.34.15:8773/services/Walrus	arn:euca:bootstrap:walrus:walrus:W00/
+SERVICE	bootstrap      	bootstrap      	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Empyrean	arn:euca:bootstrap:::172.16.34.15/
+SERVICE	autoscaling    	autoscaling    	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/AutoScaling	arn:euca:eucalyptus:autoscaling:autoscaling:172.16.34.15/
+SERVICE	jetty          	eucalyptus     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Jetty 	arn:euca:eucalyptus::jetty:172.16.34.15/
+[root@group4-15 .euca]# clear
+
+[root@group4-15 .euca]# euca-describe-services 
+SERVICE	tokens         	eucalyptus     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Tokens	arn:euca:eucalyptus::tokens:172.16.34.15/
+SERVICE	cloudwatch     	cloudwatch     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/CloudWatch	arn:euca:eucalyptus:cloudwatch:cloudwatch:172.16.34.15/
+SERVICE	loadbalancing  	loadbalancing  	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/LoadBalancing	arn:euca:eucalyptus:loadbalancing:loadbalancing:172.16.34.15/
+SERVICE	storage        	cluster1       	SC00           	ENABLED   	28  	http://172.16.34.15:8773/services/Storage	arn:euca:eucalyptus:cluster1:storage:SC00/
+SERVICE	cluster        	PARTI00        	CC00           	ENABLED   	28  	http://172.16.34.15:8774/axis2/services/EucalyptusCC	arn:euca:eucalyptus:PARTI00:cluster:CC00/
+SERVICE	euare          	eucalyptus     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Euare 	arn:euca:eucalyptus::euare:172.16.34.15/
+SERVICE	dns            	eucalyptus     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Dns   	arn:euca:eucalyptus::dns:172.16.34.15/
+SERVICE	reporting      	bootstrap      	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Reporting	arn:euca:bootstrap::reporting:172.16.34.15/
+SERVICE	notifications  	eucalyptus     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Notifications	arn:euca:eucalyptus::notifications:172.16.34.15/
+SERVICE	eucalyptus     	eucalyptus     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Eucalyptus	arn:euca:eucalyptus:::172.16.34.15/
+SERVICE	walrus         	walrus         	W00            	ENABLED   	28  	http://172.16.34.15:8773/services/Walrus	arn:euca:bootstrap:walrus:walrus:W00/
+SERVICE	bootstrap      	bootstrap      	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Empyrean	arn:euca:bootstrap:::172.16.34.15/
+SERVICE	autoscaling    	autoscaling    	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/AutoScaling	arn:euca:eucalyptus:autoscaling:autoscaling:172.16.34.15/
+SERVICE	jetty          	eucalyptus     	172.16.34.15   	ENABLED   	28  	http://172.16.34.15:8773/services/Jetty 	arn:euca:eucalyptus::jetty:172.16.34.15/
+[root@group4-15 .euca]# euca_conf --deregister-sc --partition cluster1 --host "write here server_1_IP_address without quotes" --component SC00
+[root@group4-15 .euca]# euca_conf --deregister-sc --partition cluster1 --host 172.16.34.15 --component SC00
+[root@group4-15 .euca]# euca-describe-services 
+SERVICE	tokens         	eucalyptus     	172.16.34.15   	ENABLED   	29  	http://172.16.34.15:8773/services/Tokens	arn:euca:eucalyptus::tokens:172.16.34.15/
+SERVICE	cloudwatch     	cloudwatch     	172.16.34.15   	ENABLED   	29  	http://172.16.34.15:8773/services/CloudWatch	arn:euca:eucalyptus:cloudwatch:cloudwatch:172.16.34.15/
+SERVICE	loadbalancing  	loadbalancing  	172.16.34.15   	ENABLED   	29  	http://172.16.34.15:8773/services/LoadBalancing	arn:euca:eucalyptus:loadbalancing:loadbalancing:172.16.34.15/
+SERVICE	cluster        	PARTI00        	CC00           	ENABLED   	29  	http://172.16.34.15:8774/axis2/services/EucalyptusCC	arn:euca:eucalyptus:PARTI00:cluster:CC00/
+SERVICE	euare          	eucalyptus     	172.16.34.15   	ENABLED   	29  	http://172.16.34.15:8773/services/Euare 	arn:euca:eucalyptus::euare:172.16.34.15/
+SERVICE	dns            	eucalyptus     	172.16.34.15   	ENABLED   	29  	http://172.16.34.15:8773/services/Dns   	arn:euca:eucalyptus::dns:172.16.34.15/
+SERVICE	reporting      	bootstrap      	172.16.34.15   	ENABLED   	29  	http://172.16.34.15:8773/services/Reporting	arn:euca:bootstrap::reporting:172.16.34.15/
+SERVICE	notifications  	eucalyptus     	172.16.34.15   	ENABLED   	29  	http://172.16.34.15:8773/services/Notifications	arn:euca:eucalyptus::notifications:172.16.34.15/
+SERVICE	eucalyptus     	eucalyptus     	172.16.34.15   	ENABLED   	29  	http://172.16.34.15:8773/services/Eucalyptus	arn:euca:eucalyptus:::172.16.34.15/
+SERVICE	walrus         	walrus         	W00            	ENABLED   	29  	http://172.16.34.15:8773/services/Walrus	arn:euca:bootstrap:walrus:walrus:W00/
+SERVICE	bootstrap      	bootstrap      	172.16.34.15   	ENABLED   	29  	http://172.16.34.15:8773/services/Empyrean	arn:euca:bootstrap:::172.16.34.15/
+SERVICE	autoscaling    	autoscaling    	172.16.34.15   	ENABLED   	29  	http://172.16.34.15:8773/services/AutoScaling	arn:euca:eucalyptus:autoscaling:autoscaling:172.16.34.15/
+SERVICE	jetty          	eucalyptus     	172.16.34.15   	ENABLED   	29  	http://172.16.34.15:8773/services/Jetty 	arn:euca:eucalyptus::jetty:172.16.34.15/
+[root@group4-15 .euca]# clear
+
+[root@group4-15 .euca]# euca_conf --register-sc --partition PARTI00 --host 172.16.34.15 --component SC00
+SERVICE	storage        	PARTI00        	SC00           	BROKEN    	31  	http://172.16.34.15:8773/services/Storage	arn:euca:eucalyptus:PARTI00:storage:SC00/
+Registered the first storage controller in partition 'PARTI00'.  You must choose a storage back end with ``euca-modify-property -p PARTI00.storage.blockstoragemanager=$BACKEND''
+root@172.16.34.15's password: 
+Permission denied, please try again.
+root@172.16.34.15's password: 
+[root@group4-15 .euca]# euca-describe-nodes 
+NODE	PARTI00		172.16.34.16	ENABLED	
+[root@group4-15 .euca]# euca-create-volume -s 10 -z PARTI00
+euca-create-volume: error (CreateVolumeType): Failed to lookup ENABLED service of type Storage in partition Partition:name=PARTI00:cc-cert-serial=32904731687696:nc-cert-serial=32908862543573
+[root@group4-15 .euca]#   euca-run-instances -k mykey -t m1.large emi-144C36A2
+euca-run-instances: error (RunInstancesType): Failed to lookup image named: emi-144C36A2
+[root@group4-15 .euca]# euca-describe-images
+IMAGE	eki-53293377	centos64/vmlinuz-2.6.32-358.11.1.el6.x86_64.manifest.xml	943323387200	available	private	x86_64	kernel				instance-store		
+IMAGE	eki-846939CA	loadbalancer_v2/vmlinuz-2.6.32-431.5.1.el6.x86_64.manifest.xml	943323387200	available	private	x86_64	kernel				instance-store		
+IMAGE	eki-982F3A41	loadbalancer_v1/vmlinuz-2.6.32-431.5.1.el6.x86_64.manifest.xml	943323387200	available	private	x86_64	kernel				instance-store		
+IMAGE	emi-4761358C	centos64/euca-centos6.4-ec2user-2013.07.12-x86_64.img.manifest.xml	943323387200	available	public	x86_64	machine	eki-53293377	eri-F48D3664		instance-store	paravirtualized	
+IMAGE	emi-F85935F7	loadbalancer_v2/eucalyptus-load-balancer-image-1.0.4-164.img.manifest.xml	943323387200	available	private	x86_64	machine	eki-846939CA	eri-A7543615		instance-store	paravirtualized	
+IMAGE	emi-F9913913	loadbalancer_v1/eucalyptus-load-balancer-image-1.0.4-164.img.manifest.xml	943323387200	available	private	x86_64	machine	eki-982F3A41	eri-F3D236A9		instance-store	paravirtualized	
+IMAGE	eri-A7543615	loadbalancer_v2/initramfs-2.6.32-431.5.1.el6.x86_64.img.manifest.xml	943323387200	available	private	x86_64	ramdisk			instance-store		
+IMAGE	eri-F3D236A9	loadbalancer_v1/initramfs-2.6.32-431.5.1.el6.x86_64.img.manifest.xml	943323387200	available	private	x86_64	ramdisk			instance-store		
+IMAGE	eri-F48D3664	centos64/initramfs-2.6.32-358.11.1.el6.x86_64.img.manifest.xml	943323387200	available	private	x86_64	ramdisk				instance-store		
+[root@group4-15 .euca]#   euca-run-instances -k mykey -t m1.large emi-4761358C
+euca-run-instances: error (RunInstancesType): Failed to find key pair: mykey for arn:aws:euare::943323387200:
+[root@group4-15 .euca]# euca-run-instances -k sshlogin emi-4761358C
+RESERVATION	r-C57344A5	943323387200	default
+INSTANCE	i-1AE33EBE	emi-4761358C	0.0.0.0	0.0.0.0	pending	sshlogin	0		m1.small	2014-04-16T11:11:37.710Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	0.0.0.0	0.0.0.0			instance-store					paravirtualized	
+
+[root@group4-15 .euca]# ssh -i sshlogin ec2-user@172.16.34.125
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that the RSA host key has just been changed.
+The fingerprint for the RSA key sent by the remote host is
+4d:e1:d4:3f:a3:95:d4:90:e7:12:56:95:64:f8:d6:4f.
+Please contact your system administrator.
+Add correct host key in /root/.ssh/known_hosts to get rid of this message.
+Offending key in /root/.ssh/known_hosts:3
+RSA host key for 172.16.34.125 has changed and you have requested strict checking.
+Host key verification failed.
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# ssh-keygen -R 172.16.34.125
+/root/.ssh/known_hosts updated.
+Original contents retained as /root/.ssh/known_hosts.old
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# ssh -i sshlogin ec2-user@172.16.34.125
+The authenticity of host '172.16.34.125 (172.16.34.125)' can't be established.
+RSA key fingerprint is 4d:e1:d4:3f:a3:95:d4:90:e7:12:56:95:64:f8:d6:4f.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.16.34.125' (RSA) to the list of known hosts.
+//////////////////////////////////////////////////////////////////////////////////
+[root@group4-15 .euca]# euca-describe-services
+SERVICE	tokens         	eucalyptus     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Tokens	arn:euca:eucalyptus::tokens:172.16.34.15/
+SERVICE	cloudwatch     	cloudwatch     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/CloudWatch	arn:euca:eucalyptus:cloudwatch:cloudwatch:172.16.34.15/
+SERVICE	loadbalancing  	loadbalancing  	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/LoadBalancing	arn:euca:eucalyptus:loadbalancing:loadbalancing:172.16.34.15/
+SERVICE	storage        	PARTI00        	SC00           	BROKEN    	31  	http://172.16.34.15:8773/services/Storage	arn:euca:eucalyptus:PARTI00:storage:SC00/
+SERVICE	cluster        	PARTI00        	CC00           	ENABLED   	31  	http://172.16.34.15:8774/axis2/services/EucalyptusCC	arn:euca:eucalyptus:PARTI00:cluster:CC00/
+SERVICE	euare          	eucalyptus     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Euare 	arn:euca:eucalyptus::euare:172.16.34.15/
+SERVICE	dns            	eucalyptus     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Dns   	arn:euca:eucalyptus::dns:172.16.34.15/
+SERVICE	reporting      	bootstrap      	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Reporting	arn:euca:bootstrap::reporting:172.16.34.15/
+SERVICE	notifications  	eucalyptus     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Notifications	arn:euca:eucalyptus::notifications:172.16.34.15/
+SERVICE	eucalyptus     	eucalyptus     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Eucalyptus	arn:euca:eucalyptus:::172.16.34.15/
+SERVICE	walrus         	walrus         	W00            	ENABLED   	31  	http://172.16.34.15:8773/services/Walrus	arn:euca:bootstrap:walrus:walrus:W00/
+SERVICE	bootstrap      	bootstrap      	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Empyrean	arn:euca:bootstrap:::172.16.34.15/
+SERVICE	autoscaling    	autoscaling    	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/AutoScaling	arn:euca:eucalyptus:autoscaling:autoscaling:172.16.34.15/
+SERVICE	jetty          	eucalyptus     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Jetty 	arn:euca:eucalyptus::jetty:172.16.34.15/
+[root@group4-15 .euca]# euca-modify-property -p PARTI00.storage.blockstoragemanager=das
+PROPERTY	PARTI00.storage.blockstoragemanager	das was <unset>
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# euca-describe-services
+SERVICE	tokens         	eucalyptus     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Tokens	arn:euca:eucalyptus::tokens:172.16.34.15/
+SERVICE	cloudwatch     	cloudwatch     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/CloudWatch	arn:euca:eucalyptus:cloudwatch:cloudwatch:172.16.34.15/
+SERVICE	loadbalancing  	loadbalancing  	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/LoadBalancing	arn:euca:eucalyptus:loadbalancing:loadbalancing:172.16.34.15/
+SERVICE	storage        	PARTI00        	SC00           	BROKEN    	31  	http://172.16.34.15:8773/services/Storage	arn:euca:eucalyptus:PARTI00:storage:SC00/
+SERVICE	cluster        	PARTI00        	CC00           	ENABLED   	31  	http://172.16.34.15:8774/axis2/services/EucalyptusCC	arn:euca:eucalyptus:PARTI00:cluster:CC00/
+SERVICE	euare          	eucalyptus     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Euare 	arn:euca:eucalyptus::euare:172.16.34.15/
+SERVICE	dns            	eucalyptus     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Dns   	arn:euca:eucalyptus::dns:172.16.34.15/
+SERVICE	reporting      	bootstrap      	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Reporting	arn:euca:bootstrap::reporting:172.16.34.15/
+SERVICE	notifications  	eucalyptus     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Notifications	arn:euca:eucalyptus::notifications:172.16.34.15/
+SERVICE	eucalyptus     	eucalyptus     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Eucalyptus	arn:euca:eucalyptus:::172.16.34.15/
+SERVICE	walrus         	walrus         	W00            	ENABLED   	31  	http://172.16.34.15:8773/services/Walrus	arn:euca:bootstrap:walrus:walrus:W00/
+SERVICE	bootstrap      	bootstrap      	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Empyrean	arn:euca:bootstrap:::172.16.34.15/
+SERVICE	autoscaling    	autoscaling    	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/AutoScaling	arn:euca:eucalyptus:autoscaling:autoscaling:172.16.34.15/
+SERVICE	jetty          	eucalyptus     	172.16.34.15   	ENABLED   	31  	http://172.16.34.15:8773/services/Jetty 	arn:euca:eucalyptus::jetty:172.16.34.15/
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# euca-modify-property -p PARTI00.storage.dasdevice=/dev/vg01
+PROPERTY	PARTI00.storage.dasdevice	/dev/vg01 was /dev/blockdev
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# euca-describe-services
+SERVICE	tokens         	eucalyptus     	172.16.34.15   	ENABLED   	32  	http://172.16.34.15:8773/services/Tokens	arn:euca:eucalyptus::tokens:172.16.34.15/
+SERVICE	cloudwatch     	cloudwatch     	172.16.34.15   	ENABLED   	32  	http://172.16.34.15:8773/services/CloudWatch	arn:euca:eucalyptus:cloudwatch:cloudwatch:172.16.34.15/
+SERVICE	loadbalancing  	loadbalancing  	172.16.34.15   	ENABLED   	32  	http://172.16.34.15:8773/services/LoadBalancing	arn:euca:eucalyptus:loadbalancing:loadbalancing:172.16.34.15/
+SERVICE	storage        	PARTI00        	SC00           	ENABLED   	32  	http://172.16.34.15:8773/services/Storage	arn:euca:eucalyptus:PARTI00:storage:SC00/
+SERVICE	cluster        	PARTI00        	CC00           	ENABLED   	32  	http://172.16.34.15:8774/axis2/services/EucalyptusCC	arn:euca:eucalyptus:PARTI00:cluster:CC00/
+SERVICE	euare          	eucalyptus     	172.16.34.15   	ENABLED   	32  	http://172.16.34.15:8773/services/Euare 	arn:euca:eucalyptus::euare:172.16.34.15/
+SERVICE	dns            	eucalyptus     	172.16.34.15   	ENABLED   	32  	http://172.16.34.15:8773/services/Dns   	arn:euca:eucalyptus::dns:172.16.34.15/
+SERVICE	reporting      	bootstrap      	172.16.34.15   	ENABLED   	32  	http://172.16.34.15:8773/services/Reporting	arn:euca:bootstrap::reporting:172.16.34.15/
+SERVICE	notifications  	eucalyptus     	172.16.34.15   	ENABLED   	32  	http://172.16.34.15:8773/services/Notifications	arn:euca:eucalyptus::notifications:172.16.34.15/
+SERVICE	eucalyptus     	eucalyptus     	172.16.34.15   	ENABLED   	32  	http://172.16.34.15:8773/services/Eucalyptus	arn:euca:eucalyptus:::172.16.34.15/
+SERVICE	walrus         	walrus         	W00            	ENABLED   	32  	http://172.16.34.15:8773/services/Walrus	arn:euca:bootstrap:walrus:walrus:W00/
+SERVICE	bootstrap      	bootstrap      	172.16.34.15   	ENABLED   	32  	http://172.16.34.15:8773/services/Empyrean	arn:euca:bootstrap:::172.16.34.15/
+SERVICE	autoscaling    	autoscaling    	172.16.34.15   	ENABLED   	32  	http://172.16.34.15:8773/services/AutoScaling	arn:euca:eucalyptus:autoscaling:autoscaling:172.16.34.15/
+SERVICE	jetty          	eucalyptus     	172.16.34.15   	ENABLED   	32  	http://172.16.34.15:8773/services/Jetty 	arn:euca:eucalyptus::jetty:172.16.34.15/
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# euca-create-volume -s 10 -z PARTI00
+VOLUME	vol-D6D23AD8	10		PARTI00	creating	2014-04-16T11:34:30.397Z
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# euca-describe-instances
+RESERVATION	r-C57344A5	943323387200	default
+INSTANCE	i-1AE33EBE	emi-4761358C	172.16.34.125	10.10.43.85	running	sshlogin	0		m1.small	2014-04-16T11:11:37.710Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	172.16.34.125	10.10.43.85			instance-store					paravirtualized						
+TAG	instance	i-1AE33EBE	euca:node	172.16.34.16
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# euca-attach-volume -i i-1AE33EBE -d /dev/vdf  vol-D6D23AD8
+ATTACHMENT	vol-D6D23AD8	i-1AE33EBE	/dev/vdf	attaching	2014-04-16T11:36:23.449Z
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# 
+[root@group4-15 .euca]# euca-describe-volumes
+VOLUME	vol-D6D23AD8	10		PARTI00	in-use	2014-04-16T11:34:30.397Z	standard	
+ATTACHMENT	vol-D6D23AD8	i-1AE33EBE	/dev/vdf	attached	2014-04-16T11:36:23.468Z
+/////////////////////////////////////////////////////////////////////////////////////////////
+[root@group4-15 .euca]# ssh -i sshlogin ec2-user@172.16.34.125
+The authenticity of host '172.16.34.125 (172.16.34.125)' can't be established.
+RSA key fingerprint is 4d:e1:d4:3f:a3:95:d4:90:e7:12:56:95:64:f8:d6:4f.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.16.34.125' (RSA) to the list of known hosts.
+Last login: Wed Apr 16 07:21:17 2014 from 172.16.34.125
+[ec2-user@ip-10-10-43-85 ~]$ sudo su
+[root@ip-10-10-43-85 ec2-user]# 
+[root@ip-10-10-43-85 ec2-user]# 
+[root@ip-10-10-43-85 ec2-user]# 
+[root@ip-10-10-43-85 ec2-user]# fdisk /dev/vdb
+Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
+Building a new DOS disklabel with disk identifier 0x179f6581.
+Changes will remain in memory only, until you decide to write them.
+After that, of course, the previous content won't be recoverable.
+
+Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)
+
+WARNING: DOS-compatible mode is deprecated. It's strongly recommended to
+         switch off the mode (command 'c') and change display units to
+         sectors (command 'u').
+
+Command (m for help): n
+Command action
+   e   extended
+   p   primary partition (1-4)
+p
+Partition number (1-4): 1
+First cylinder (1-20805, default 1): 1
+Last cylinder, +cylinders or +size{K,M,G} (1-20805, default 20805): 20805
+
+Command (m for help): w
+The partition table has been altered!
+
+Calling ioctl() to re-read partition table.
+Syncing disks.
+[root@ip-10-10-43-85 ec2-user]# mkfs.ext3 /dev/vdb1
+mke2fs 1.41.12 (17-May-2010)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+655360 inodes, 2621422 blocks
+131071 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=2684354560
+80 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+
+Writing inode tables: done                            
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+This filesystem will be automatically checked every 37 mounts or
+180 days, whichever comes first.  Use tune2fs -c or -i to override.
+[root@ip-10-10-43-85 ec2-user]# mkdir /opt/mysql
+[root@ip-10-10-43-85 ec2-user]# mount /dev/vdb1 /opt/mysql/
+[root@ip-10-10-43-85 ec2-user]# mkdir ~/yumbackup
+[root@ip-10-10-43-85 ec2-user]# mv /etc/yum.repos.d/* ~/yumbackup/
+[root@ip-10-10-43-85 ec2-user]# vim /etc/yum.repos.d/euca.repo
+[root@ip-10-10-43-85 ec2-user]# 
+///////////////////////////////////Install mysql server///////////
+[root@ip-10-10-43-85 ec2-user]# yum install mysql-server
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+project1                                                                                                                                         | 1.3 kB     00:00     
+project1/primary                                                                                                                                 |  17 kB     00:00     
+project1                                                                                                                                                          35/35
+Setting up Install Process
+Resolving Dependencies
+--> Running transaction check
+---> Package mysql-server.x86_64 0:5.1.69-1.el6_4 will be installed
+--> Processing Dependency: mysql = 5.1.69-1.el6_4 for package: mysql-server-5.1.69-1.el6_4.x86_64
+--> Processing Dependency: perl-DBI for package: mysql-server-5.1.69-1.el6_4.x86_64
+--> Processing Dependency: perl-DBD-MySQL for package: mysql-server-5.1.69-1.el6_4.x86_64
+--> Processing Dependency: perl(DBI) for package: mysql-server-5.1.69-1.el6_4.x86_64
+--> Running transaction check
+---> Package mysql.x86_64 0:5.1.69-1.el6_4 will be installed
+---> Package perl-DBD-MySQL.x86_64 0:4.013-3.el6 will be installed
+---> Package perl-DBI.x86_64 0:1.609-4.el6 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================================================================
+ Package                                    Arch                               Version                                       Repository                            Size
+========================================================================================================================================================================
+Installing:
+ mysql-server                               x86_64                             5.1.69-1.el6_4                                project1                             8.7 M
+Installing for dependencies:
+ mysql                                      x86_64                             5.1.69-1.el6_4                                project1                             907 k
+ perl-DBD-MySQL                             x86_64                             4.013-3.el6                                   project1                             134 k
+ perl-DBI                                   x86_64                             1.609-4.el6                                   project1                             705 k
+
+Transaction Summary
+========================================================================================================================================================================
+Install       4 Package(s)
+
+Total download size: 10 M
+Installed size: 29 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/4): mysql-5.1.69-1.el6_4.x86_64.rpm                                                                                                           | 907 kB     00:00     
+(2/4): mysql-server-5.1.69-1.el6_4.x86_64.rpm                                                                                                    | 8.7 MB     00:00     
+(3/4): perl-DBD-MySQL-4.013-3.el6.x86_64.rpm                                                                                                     | 134 kB     00:00     
+(4/4): perl-DBI-1.609-4.el6.x86_64.rpm                                                                                                           | 705 kB     00:00     
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                    48 MB/s |  10 MB     00:00     
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : perl-DBI-1.609-4.el6.x86_64                                                                                                                          1/4 
+  Installing : perl-DBD-MySQL-4.013-3.el6.x86_64                                                                                                                    2/4 
+  Installing : mysql-5.1.69-1.el6_4.x86_64                                                                                                                          3/4 
+  Installing : mysql-server-5.1.69-1.el6_4.x86_64                                                                                                                   4/4 
+  Verifying  : perl-DBD-MySQL-4.013-3.el6.x86_64                                                                                                                    1/4 
+  Verifying  : mysql-server-5.1.69-1.el6_4.x86_64                                                                                                                   2/4 
+  Verifying  : mysql-5.1.69-1.el6_4.x86_64                                                                                                                          3/4 
+  Verifying  : perl-DBI-1.609-4.el6.x86_64                                                                                                                          4/4 
+
+Installed:
+  mysql-server.x86_64 0:5.1.69-1.el6_4                                                                                                                                  
+
+Dependency Installed:
+  mysql.x86_64 0:5.1.69-1.el6_4                        perl-DBD-MySQL.x86_64 0:4.013-3.el6                        perl-DBI.x86_64 0:1.609-4.el6                       
+
+Complete!
+///////// ///////////////////////////
+[root@ip-10-10-43-85 ec2-user]# vim /etc/my.cnf 
+[root@ip-10-10-43-85 ec2-user]# mkdir /opt/mysql/log 
+[root@ip-10-10-43-85 ec2-user]# mkdir /opt/mysql/data 
+[root@ip-10-10-43-85 ec2-user]# chown mysql:mysql /opt/mysql -R 
+[root@ip-10-10-43-85 ec2-user]# /etc/init.d/mysqld start 
+Initializing MySQL database:  Installing MySQL system tables...
+OK
+Filling help tables...
+OK
+
+To start mysqld at boot time you have to copy
+support-files/mysql.server to the right place for your system
+
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !
+To do so, start the server, then issue the following commands:
+
+/usr/bin/mysqladmin -u root password 'new-password'
+/usr/bin/mysqladmin -u root -h ip-10-10-43-85 password 'new-password'
+
+Alternatively you can run:
+/usr/bin/mysql_secure_installation
+
+which will also give you the option of removing the test
+databases and anonymous user created by default.  This is
+strongly recommended for production servers.
+
+See the manual for more instructions.
+
+You can start the MySQL daemon with:
+cd /usr ; /usr/bin/mysqld_safe &
+
+You can test the MySQL daemon with mysql-test-run.pl
+cd /usr/mysql-test ; perl mysql-test-run.pl
+
+Please report any problems with the /usr/bin/mysqlbug script!
+
+                                                           [  OK  ]
+Starting mysqld:                                           [  OK  ]
+[root@ip-10-10-43-85 ec2-user]# mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.1.69 Source distribution
+
+Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create user 'euca'@'%' identified by 'foobar';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant all privileges on *.* to 'euca'@'%' with grant option;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create database eucapp 
+    -> ;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> exit;
+/////////////////////////////////////////////
+euca-bundle-vol -d /mnt/backup/ -p mybackup -s 2048 --arch x86_64
+Bundling image 100% |=============================================================================================================|   2.00 GB  26.21 MB/s Time: 0:01:21
+[root@ip-10-10-43-85 ec2-user]# euca-bundle-vol: error: Directory not empty: /mnt/backup
+Wrote /mnt/backup/mybackup.part.0
+Wrote /mnt/backup/mybackup.part.1
+Wrote /mnt/backup/mybackup.part.2
+Wrote /mnt/backup/mybackup.part.3
+Wrote /mnt/backup/mybackup.part.4
+Wrote /mnt/backup/mybackup.part.5
+Wrote /mnt/backup/mybackup.part.6
+Wrote /mnt/backup/mybackup.part.7
+Wrote /mnt/backup/mybackup.part.8
+Wrote /mnt/backup/mybackup.part.9
+Wrote /mnt/backup/mybackup.part.10[root@ip-10-10-43-101 ec2-user]# yum install python-pip
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+project1                                                                                                                                        | 1.3 kB     00:00     
+project1/primary                                                                                                                                |  17 kB     00:00     
+project1                                                                                                                                                         35/35
+Setting up Install Process
+Resolving Dependencies
+--> Running transaction check
+---> Package python-pip.noarch 0:1.3.1-4.el6 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=======================================================================================================================================================================
+ Package                                  Arch                                 Version                                    Repository                              Size
+=======================================================================================================================================================================
+Installing:
+ python-pip                               noarch                               1.3.1-4.el6                                project1                               330 k
+
+Transaction Summary
+=======================================================================================================================================================================
+Install       1 Package(s)
+
+Total download size: 330 k
+Installed size: 1.0 M
+Is this ok [y/N]: y
+Downloading Packages:
+python-pip-1.3.1-4.el6.noarch.rpm                                                                                                               | 330 kB     00:00     
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : python-pip-1.3.1-4.el6.noarch                                                                                                                       1/1 
+  Verifying  : python-pip-1.3.1-4.el6.noarch                                                                                                                       1/1 
+
+Installed:
+  python-pip.noarch 0:1.3.1-4.el6                                                                                                                                      
+
+Complete!
+
+Wrote /mnt/backup/mybackup.part.11
+Wrote /mnt/backup/mybackup.part.12
+Wrote /mnt/backup/mybackup.part.13
+Wrote /mnt/backup/mybackup.part.14
+Wrote /mnt/backup/mybackup.part.15
+Wrote /mnt/backup/mybackup.part.16
+Wrote /mnt/backup/mybackup.part.17
+Wrote /mnt/backup/mybackup.part.18
+Wrote /mnt/backup/mybackup.part.19
+Wrote /mnt/backup/mybackup.part.20
+Wrote /mnt/backup/mybackup.part.21
+Wrote /mnt/backup/mybackup.part.22
+Wrote /mnt/backup/mybackup.part.23
+Wrote /mnt/backup/mybackup.part.24
+Wrote /mnt/backup/mybackup.part.25
+Wrote /mnt/backup/mybackup.part.26
+Wrote /mnt/backup/mybackup.part.27
+Wrote /mnt/backup/mybackup.part.28
+Wrote /mnt/backup/mybackup.part.29
+Wrote /mnt/backup/mybackup.part.30
+Wrote /mnt/backup/mybackup.part.31
+Wrote manifest /mnt/backup/mybackup.manifest.xml
+[root@ip-10-10-43-85 euca]# 
+///////////Upload mysql instances//////////
+[root@ip-10-10-43-85 euca]# euca-upload-bundle -b mysqlInstance -m /mnt/backup/mybackup.manifest.xml 
+mybackup.part.0  ( 1/32) 100% |===================================================================================================|  10.00 MB  30.57 MB/s Time: 0:00:00
+mybackup.part.1  ( 2/32) 100% |===================================================================================================|  10.00 MB  36.21 MB/s Time: 0:00:00
+mybackup.part.2  ( 3/32) 100% |===================================================================================================|  10.00 MB  37.61 MB/s Time: 0:00:00
+mybackup.part.3  ( 4/32) 100% |===================================================================================================|  10.00 MB  39.25 MB/s Time: 0:00:00
+mybackup.part.4  ( 5/32) 100% |===================================================================================================|  10.00 MB  42.51 MB/s Time: 0:00:00
+mybackup.part.5  ( 6/32) 100% |===================================================================================================|  10.00 MB  39.19 MB/s Time: 0:00:00
+mybackup.part.6  ( 7/32) 100% |===================================================================================================|  10.00 MB  36.42 MB/s Time: 0:00:00
+mybackup.part.7  ( 8/32) 100% |===================================================================================================|  10.00 MB  37.63 MB/s Time: 0:00:00
+mybackup.part.8  ( 9/32) 100% |===================================================================================================|  10.00 MB  40.53 MB/s Time: 0:00:00
+mybackup.part.9  (10/32) 100% |===================================================================================================|  10.00 MB  42.49 MB/s Time: 0:00:00
+mybackup.part.10 (11/32) 100% |===================================================================================================|  10.00 MB  33.96 MB/s Time: 0:00:00
+mybackup.part.11 (12/32) 100% |===================================================================================================|  10.00 MB  40.70 MB/s Time: 0:00:00
+mybackup.part.12 (13/32) 100% |===================================================================================================|  10.00 MB  42.39 MB/s Time: 0:00:00
+mybackup.part.13 (14/32) 100% |===================================================================================================|  10.00 MB  44.22 MB/s Time: 0:00:00
+mybackup.part.14 (15/32) 100% |===================================================================================================|  10.00 MB  36.46 MB/s Time: 0:00:00
+mybackup.part.15 (16/32) 100% |===================================================================================================|  10.00 MB  40.63 MB/s Time: 0:00:00
+mybackup.part.16 (17/32) 100% |===================================================================================================|  10.00 MB  40.80 MB/s Time: 0:00:00
+mybackup.part.17 (18/32) 100% |===================================================================================================|  10.00 MB  40.76 MB/s Time: 0:00:00
+mybackup.part.18 (19/32) 100% |===================================================================================================|  10.00 MB  37.81 MB/s Time: 0:00:00
+mybackup.part.19 (20/32) 100% |===================================================================================================|  10.00 MB  32.39 MB/s Time: 0:00:00
+mybackup.part.20 (21/32) 100% |===================================================================================================|  10.00 MB  42.40 MB/s Time: 0:00:00
+mybackup.part.21 (22/32) 100% |===================================================================================================|  10.00 MB  42.41 MB/s Time: 0:00:00
+mybackup.part.22 (23/32) 100% |===================================================================================================|  10.00 MB  39.20 MB/s Time: 0:00:00
+mybackup.part.23 (24/32) 100% |===================================================================================================|  10.00 MB  42.32 MB/s Time: 0:00:00
+mybackup.part.24 (25/32) 100% |===================================================================================================|  10.00 MB  37.74 MB/s Time: 0:00:00
+mybackup.part.25 (26/32) 100% |===================================================================================================|  10.00 MB  42.40 MB/s Time: 0:00:00
+mybackup.part.26 (27/32) 100% |===================================================================================================|  10.00 MB  40.80 MB/s Time: 0:00:00
+mybackup.part.27 (28/32) 100% |===================================================================================================|  10.00 MB  42.51 MB/s Time: 0:00:00
+mybackup.part.28 (29/32) 100% |===================================================================================================|  10.00 MB  42.42 MB/s Time: 0:00:00
+mybackup.part.29 (30/32) 100% |===================================================================================================|  10.00 MB  40.71 MB/s Time: 0:00:00
+mybackup.part.30 (31/32) 100% |===================================================================================================|  10.00 MB  37.78 MB/s Time: 0:00:00
+mybackup.part.31 (32/32) 100% |===================================================================================================|   9.26 MB  42.87 MB/s Time: 0:00:00
+mybackup.manifest.xml 100% |======================================================================================================|   7.86 kB  46.09 kB/s Time: 0:00:00
+Uploaded mysqlInstance/mybackup.manifest.xml
+[root@ip-10-10-43-85 euca]# euca-register mysqlInstance/mybackup.manifest.xml -n mysql
+IMAGE	emi-3A053D01
+[root@ip-10-10-43-85 euca]# 
+euca-run-instances -k sshlogin -z PARTI00 -t m1.small emi-4761358C
+RESERVATION	r-BDF943E5	943323387200	default
+INSTANCE	i-735C4843	emi-4761358C	0.0.0.0	0.0.0.0	pending	sshlogin	0		m1.small	2014-04-16T12:25:56.721Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	0.0.0.0	0.0.0.0			instance-store					paravirtualized			
+////////////python-pip install/////////////////////
+
+[root@ip-10-10-43-101 ec2-user]# yum install python-pip
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+project1                                                                                                                                        | 1.3 kB     00:00     
+project1/primary                                                                                                                                |  17 kB     00:00     
+project1                                                                                                                                                         35/35
+Setting up Install Process
+Resolving Dependencies
+--> Running transaction check
+---> Package python-pip.noarch 0:1.3.1-4.el6 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=======================================================================================================================================================================
+ Package                                  Arch                                 Version                                    Repository                              Size
+=======================================================================================================================================================================
+Installing:
+ python-pip                               noarch                               1.3.1-4.el6                                project1                               330 k
+
+Transaction Summary
+=======================================================================================================================================================================
+Install       1 Package(s)
+
+Total download size: 330 k
+Installed size: 1.0 M
+Is this ok [y/N]: y
+Downloading Packages:
+python-pip-1.3.1-4.el6.noarch.rpm                                                                                                               | 330 kB     00:00     
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : python-pip-1.3.1-4.el6.noarch                                                                                                                       1/1 
+  Verifying  : python-pip-1.3.1-4.el6.noarch                                                                                                                       1/1 
+
+Installed:
+  python-pip.noarch 0:1.3.1-4.el6                                                                                                                                      
+
+Complete!
+//////////// DJango install ///////////////////////
+[root@ip-10-10-43-101 ec2-user]# pip-python install Django
+Downloading/unpacking Django
+  Downloading Django-1.6.2.tar.gz (6.6MB): 6.6MB downloaded
+  Running setup.py egg_info for package Django
+    warning: no previously-included files matching '__pycache__' found under directory '*'
+    warning: no previously-included files matching '*.py[co]' found under directory '*'
+Installing collected packages: Django
+  Running setup.py install for Django
+    changing mode of build/scripts-2.6/django-admin.py from 644 to 755
+    warning: no previously-included files matching '__pycache__' found under directory '*'
+    warning: no previously-included files matching '*.py[co]' found under directory '*'
+    changing mode of /usr/bin/django-admin.py to 755
+Successfully installed Django
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+[root@ip-10-10-43-101 opt]# wget http://172.16.34.36/project1/eucalyptopotamus.tar.gz
+--2014-04-16 08:58:32--  http://172.16.34.36/project1/eucalyptopotamus.tar.gz
+Connecting to 172.16.34.36:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 2333643 (2.2M) [application/x-gzip]
+Saving to: “eucalyptopotamus.tar.gz”
+
+100%[=============================================================================================================================>] 2,333,643   --.-K/s   in 0.03s   
+
+2014-04-16 08:58:32 (63.9 MB/s) - “eucalyptopotamus.tar.gz” saved [2333643/2333643]
+
+[root@ip-10-10-43-101 opt]# tar xvf eucalyptopotamus.tar.gz 
+eucalyptopotamus/
+eucalyptopotamus/.git/
+eucalyptopotamus/.git/index
+eucalyptopotamus/.git/refs/
+eucalyptopotamus/.git/refs/tags/
+eucalyptopotamus/.git/refs/remotes/
+eucalyptopotamus/.git/refs/remotes/origin/
+eucalyptopotamus/.git/refs/remotes/origin/HEAD
+eucalyptopotamus/.git/refs/heads/
+eucalyptopotamus/.git/refs/heads/master
+eucalyptopotamus/.git/objects/
+eucalyptopotamus/.git/objects/info/
+eucalyptopotamus/.git/objects/pack/
+eucalyptopotamus/.git/objects/pack/pack-8ffc22fa976f55d85af1463d4e2136f7e34d5e6e.pack
+eucalyptopotamus/.git/objects/pack/pack-8ffc22fa976f55d85af1463d4e2136f7e34d5e6e.idx
+eucalyptopotamus/.git/packed-refs
+eucalyptopotamus/.git/logs/
+eucalyptopotamus/.git/logs/refs/
+eucalyptopotamus/.git/logs/refs/heads/
+eucalyptopotamus/.git/logs/refs/heads/master
+eucalyptopotamus/.git/logs/HEAD
+eucalyptopotamus/.git/info/
+eucalyptopotamus/.git/info/exclude
+eucalyptopotamus/.git/hooks/
+eucalyptopotamus/.git/hooks/pre-commit.sample
+eucalyptopotamus/.git/hooks/post-receive.sample
+eucalyptopotamus/.git/hooks/pre-applypatch.sample
+eucalyptopotamus/.git/hooks/update.sample
+eucalyptopotamus/.git/hooks/applypatch-msg.sample
+eucalyptopotamus/.git/hooks/post-commit.sample
+eucalyptopotamus/.git/hooks/pre-rebase.sample
+eucalyptopotamus/.git/hooks/post-update.sample
+eucalyptopotamus/.git/hooks/commit-msg.sample
+eucalyptopotamus/.git/hooks/prepare-commit-msg.sample
+eucalyptopotamus/.git/config
+eucalyptopotamus/.git/HEAD
+eucalyptopotamus/.git/description
+eucalyptopotamus/.git/branches/
+eucalyptopotamus/django/
+eucalyptopotamus/django/eucapp/
+eucalyptopotamus/django/eucapp/httpd.conf
+eucalyptopotamus/django/eucapp/imagecrud/
+eucalyptopotamus/django/eucapp/imagecrud/urls.py
+eucalyptopotamus/django/eucapp/imagecrud/models.py
+eucalyptopotamus/django/eucapp/imagecrud/tests.py
+eucalyptopotamus/django/eucapp/imagecrud/views.py
+eucalyptopotamus/django/eucapp/imagecrud/__init__.py
+eucalyptopotamus/django/eucapp/eucapp/
+eucalyptopotamus/django/eucapp/eucapp/urls.py
+eucalyptopotamus/django/eucapp/eucapp/wsgi.py
+eucalyptopotamus/django/eucapp/eucapp/settings.py
+eucalyptopotamus/django/eucapp/eucapp/__init__.py
+eucalyptopotamus/django/eucapp/manage.py
+eucalyptopotamus/django/eucapp/client/
+eucalyptopotamus/django/eucapp/client/delete_all.py
+eucalyptopotamus/django/eucapp/client/upload.py
+eucalyptopotamus/django/eucapp/client/upload_many.py
+eucalyptopotamus/django/eucapp/client/get_many.py
+eucalyptopotamus/django/eucapp/client/delete.py
+eucalyptopotamus/django/eucapp/sample/
+eucalyptopotamus/django/eucapp/sample/cat4.jpeg
+eucalyptopotamus/django/eucapp/sample/macpro05.jpeg
+eucalyptopotamus/django/eucapp/sample/cat2.jpeg
+eucalyptopotamus/django/eucapp/sample/cat5.jpeg
+eucalyptopotamus/django/eucapp/sample/macpro02.jpeg
+eucalyptopotamus/django/eucapp/sample/cat3.jpeg
+eucalyptopotamus/django/eucapp/sample/macpro06.jpeg
+eucalyptopotamus/django/eucapp/sample/cat7.jpeg
+eucalyptopotamus/django/eucapp/sample/macpro04.jpeg
+eucalyptopotamus/django/eucapp/sample/cat9.jpeg
+eucalyptopotamus/django/eucapp/sample/macpro01.jpeg
+eucalyptopotamus/django/eucapp/sample/macpro03.jpeg
+eucalyptopotamus/django/eucapp/sample/cat10.jpeg
+eucalyptopotamus/django/eucapp/sample/cat1.jpeg
+eucalyptopotamus/django/eucapp/sample/cat8.jpeg
+eucalyptopotamus/django/eucapp/sample/cat6.jpeg
+eucalyptopotamus/.gitignore
+eucalyptopotamus/README.md
+[root@ip-10-10-43-101 opt]# vim eucalyptopotamus/django/eucapp/eucapp/settings.py 
+/////////////////////////////install httpd to run DJANGO/////////////////////////////////////////////////////////////
+
+
+
+[root@ip-10-10-43-101 opt]# yum install httpd mod_wsgi MySQL-python
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+Setting up Install Process
+Resolving Dependencies
+--> Running transaction check
+---> Package MySQL-python.x86_64 0:1.2.3-0.3.c1.1.el6 will be installed
+---> Package httpd.x86_64 0:2.2.15-29.el6.centos will be installed
+--> Processing Dependency: httpd-tools = 2.2.15-29.el6.centos for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Processing Dependency: apr-util-ldap for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Processing Dependency: /etc/mime.types for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Processing Dependency: libaprutil-1.so.0()(64bit) for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Processing Dependency: libapr-1.so.0()(64bit) for package: httpd-2.2.15-29.el6.centos.x86_64
+---> Package mod_wsgi.x86_64 0:3.2-3.el6 will be installed
+--> Running transaction check
+---> Package apr.x86_64 0:1.3.9-5.el6_2 will be installed
+---> Package apr-util.x86_64 0:1.3.9-3.el6_0.1 will be installed
+---> Package apr-util-ldap.x86_64 0:1.3.9-3.el6_0.1 will be installed
+---> Package httpd-tools.x86_64 0:2.2.15-29.el6.centos will be installed
+---> Package mailcap.noarch 0:2.1.31-2.el6 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=======================================================================================================================================================================
+ Package                                  Arch                              Version                                          Repository                           Size
+=======================================================================================================================================================================
+Installing:
+ MySQL-python                             x86_64                            1.2.3-0.3.c1.1.el6                               project1                             86 k
+ httpd                                    x86_64                            2.2.15-29.el6.centos                             project1                            821 k
+ mod_wsgi                                 x86_64                            3.2-3.el6                                        project1                             66 k
+Installing for dependencies:
+ apr                                      x86_64                            1.3.9-5.el6_2                                    project1                            123 k
+ apr-util                                 x86_64                            1.3.9-3.el6_0.1                                  project1                             87 k
+ apr-util-ldap                            x86_64                            1.3.9-3.el6_0.1                                  project1                             15 k
+ httpd-tools                              x86_64                            2.2.15-29.el6.centos                             project1                             73 k
+ mailcap                                  noarch                            2.1.31-2.el6                                     project1                             27 k
+
+Transaction Summary
+=======================================================================================================================================================================
+Install       8 Package(s)
+
+Total download size: 1.3 M
+Installed size: 4.0 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/8): MySQL-python-1.2.3-0.3.c1.1.el6.x86_64.rpm                                                                                               |  86 kB     00:00     
+(2/8): apr-1.3.9-5.el6_2.x86_64.rpm                                                                                                             | 123 kB     00:00     
+(3/8): apr-util-1.3.9-3.el6_0.1.x86_64.rpm                                                                                                      |  87 kB     00:00     
+(4/8): apr-util-ldap-1.3.9-3.el6_0.1.x86_64.rpm                                                                                                 |  15 kB     00:00     
+(5/8): httpd-2.2.15-29.el6.centos.x86_64.rpm                                                                                                    | 821 kB     00:00     
+(6/8): httpd-tools-2.2.15-29.el6.centos.x86_64.rpm                                                                                              |  73 kB     00:00     
+(7/8): mailcap-2.1.31-2.el6.noarch.rpm                                                                                                          |  27 kB     00:00     
+(8/8): mod_wsgi-3.2-3.el6.x86_64.rpm                                                                                                            |  66 kB     00:00     
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                   17 MB/s | 1.3 MB     00:00     
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : apr-1.3.9-5.el6_2.x86_64                                                                                                                            1/8 
+  Installing : apr-util-1.3.9-3.el6_0.1.x86_64                                                                                                                     2/8 
+  Installing : apr-util-ldap-1.3.9-3.el6_0.1.x86_64                                                                                                                3/8 
+  Installing : httpd-tools-2.2.15-29.el6.centos.x86_64                                                                                                             4/8 
+  Installing : mailcap-2.1.31-2.el6.noarch                                                                                                                         5/8 
+  Installing : httpd-2.2.15-29.el6.centos.x86_64                                                                                                                   6/8 
+  Installing : mod_wsgi-3.2-3.el6.x86_64                                                                                                                           7/8 
+  Installing : MySQL-python-1.2.3-0.3.c1.1.el6.x86_64                                                                                                              8/8 
+  Verifying  : httpd-2.2.15-29.el6.centos.x86_64                                                                                                                   1/8 
+  Verifying  : apr-util-ldap-1.3.9-3.el6_0.1.x86_64                                                                                                                2/8 
+  Verifying  : MySQL-python-1.2.3-0.3.c1.1.el6.x86_64                                                                                                              3/8 
+  Verifying  : httpd-tools-2.2.15-29.el6.centos.x86_64                                                                                                             4/8 
+  Verifying  : mod_wsgi-3.2-3.el6.x86_64                                                                                                                           5/8 
+  Verifying  : mailcap-2.1.31-2.el6.noarch                                                                                                                         6/8 
+  Verifying  : apr-1.3.9-5.el6_2.x86_64                                                                                                                            7/8 
+  Verifying  : apr-util-1.3.9-3.el6_0.1.x86_64                                                                                                                     8/8 
+
+Installed:
+  MySQL-python.x86_64 0:1.2.3-0.3.c1.1.el6                     httpd.x86_64 0:2.2.15-29.el6.centos                     mod_wsgi.x86_64 0:3.2-3.el6                    
+
+Dependency Installed:
+  apr.x86_64 0:1.3.9-5.el6_2         apr-util.x86_64 0:1.3.9-3.el6_0.1      apr-util-ldap.x86_64 0:1.3.9-3.el6_0.1      httpd-tools.x86_64 0:2.2.15-29.el6.centos     
+  mailcap.noarch 0:2.1.31-2.el6     
+
+Complete!
+////////////////////////////////////////////////////////
+[root@ip-10-10-43-101 eucapp]# wget http://172.16.34.36/project1/httplib2-0.8.tar.gz
+--2014-04-16 09:11:23--  http://172.16.34.36/project1/httplib2-0.8.tar.gz
+Connecting to 172.16.34.36:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 148284 (145K) [application/x-gzip]
+Saving to: “httplib2-0.8.tar.gz”
+
+100%[=============================================================================================================================>] 148,284     --.-K/s   in 0.004s  
+
+2014-04-16 09:11:23 (32.5 MB/s) - “httplib2-0.8.tar.gz” saved [148284/148284]
+
+[root@ip-10-10-43-101 eucapp]# pip install httplib2-0.8.tar.gz 
+Unpacking ./httplib2-0.8.tar.gz
+  Running setup.py egg_info for package from file:///opt/eucalyptopotamus/django/eucapp/httplib2-0.8.tar.gz
+Installing collected packages: httplib2
+  Running setup.py install for httplib2
+Successfully installed httplib2
+Cleaning up...
+[root@ip-10-10-43-101 eucapp]# wget http://172.16.34.36/project1/boto-2.10.0.tar.gz
+--2014-04-16 09:11:59--  http://172.16.34.36/project1/boto-2.10.0.tar.gz
+Connecting to 172.16.34.36:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1037320 (1013K) [application/x-gzip]
+Saving to: “boto-2.10.0.tar.gz”
+
+100%[=============================================================================================================================>] 1,037,320   --.-K/s   in 0.02s   
+
+2014-04-16 09:11:59 (50.6 MB/s) - “boto-2.10.0.tar.gz” saved [1037320/1037320]
+
+[root@ip-10-10-43-101 eucapp]# pip install boto-2.10.0.tar.gz 
+Unpacking ./boto-2.10.0.tar.gz
+  Running setup.py egg_info for package from file:///opt/eucalyptopotamus/django/eucapp/boto-2.10.0.tar.gz
+    warning: no files found matching 'boto/mturk/test/*.doctest'
+    warning: no files found matching 'boto/mturk/test/.gitignore'
+Installing collected packages: boto
+  Found existing installation: boto 2.5.2
+    Uninstalling boto:
+      Successfully uninstalled boto
+  Running setup.py install for boto
+    warning: no files found matching 'boto/mturk/test/*.doctest'
+    warning: no files found matching 'boto/mturk/test/.gitignore'
+    changing mode of build/scripts-2.6/sdbadmin from 644 to 755
+    changing mode of build/scripts-2.6/elbadmin from 644 to 755
+    changing mode of build/scripts-2.6/cfadmin from 644 to 755
+    changing mode of build/scripts-2.6/s3put from 644 to 755
+    changing mode of build/scripts-2.6/fetch_file from 644 to 755
+    changing mode of build/scripts-2.6/launch_instance from 644 to 755
+    changing mode of build/scripts-2.6/list_instances from 644 to 755
+    changing mode of build/scripts-2.6/taskadmin from 644 to 755
+    changing mode of build/scripts-2.6/kill_instance from 644 to 755
+    changing mode of build/scripts-2.6/bundle_image from 644 to 755
+    changing mode of build/scripts-2.6/pyami_sendmail from 644 to 755
+    changing mode of build/scripts-2.6/lss3 from 644 to 755
+    changing mode of build/scripts-2.6/cq from 644 to 755
+    changing mode of build/scripts-2.6/route53 from 644 to 755
+    changing mode of build/scripts-2.6/cwutil from 644 to 755
+    changing mode of build/scripts-2.6/instance_events from 644 to 755
+    changing mode of build/scripts-2.6/asadmin from 644 to 755
+    changing mode of build/scripts-2.6/glacier from 644 to 755
+    changing mode of build/scripts-2.6/mturk from 644 to 755
+    changing mode of build/scripts-2.6/dynamodb_dump from 644 to 755
+    changing mode of build/scripts-2.6/dynamodb_load from 644 to 755
+    changing mode of /usr/bin/lss3 to 755
+    changing mode of /usr/bin/bundle_image to 755
+    changing mode of /usr/bin/elbadmin to 755
+    changing mode of /usr/bin/dynamodb_load to 755
+    changing mode of /usr/bin/dynamodb_dump to 755
+    changing mode of /usr/bin/launch_instance to 755
+    changing mode of /usr/bin/pyami_sendmail to 755
+    changing mode of /usr/bin/route53 to 755
+    changing mode of /usr/bin/cwutil to 755
+    changing mode of /usr/bin/asadmin to 755
+    changing mode of /usr/bin/glacier to 755
+    changing mode of /usr/bin/s3put to 755
+    changing mode of /usr/bin/taskadmin to 755
+    changing mode of /usr/bin/mturk to 755
+    changing mode of /usr/bin/cfadmin to 755
+    changing mode of /usr/bin/kill_instance to 755
+    changing mode of /usr/bin/cq to 755
+    changing mode of /usr/bin/fetch_file to 755
+    changing mode of /usr/bin/list_instances to 755
+    changing mode of /usr/bin/sdbadmin to 755
+    changing mode of /usr/bin/instance_events to 755
+Successfully installed boto
+Cleaning up...
+[root@ip-10-10-43-101 eucapp]#  python manage.py syncdb
+Creating tables ...
+Creating table auth_permission
+Creating table auth_group_permissions
+Creating table auth_group
+Creating table auth_user_groups
+Creating table auth_user_user_permissions
+Creating table auth_user
+Creating table django_content_type
+Creating table django_session
+Creating table django_site
+Creating table imagecrud_image
+
+You just installed Django's auth system, which means you don't have any superusers defined.
+Would you like to create one now? (yes/no): yes
+Username (leave blank to use 'root'): 
+Email address: ynor7005326@gmail.com
+Password: 
+Password (again): 
+Superuser created successfully.
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+[root@ip-10-10-43-101 eucapp]# mv /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bkup
+[root@ip-10-10-43-101 eucapp]# ln -s /opt/eucalyptopotamus/django/eucapp/httpd.conf /etc/httpd/conf/httpd.conf
+[root@ip-10-10-43-101 eucapp]# /etc/init.d/httpd start
+Starting httpd: httpd: Could not reliably determine the server's fully qualified domain name, using 10.10.43.101 for ServerName
+                                                           [  OK  ]
+[root@ip-10-10-43-101 eucapp]# chkconfig httpd on
+//////////////////////////////////////////////////////////////////////
+[root@ip-10-10-43-101 eucapp]# scp -r root@172.16.34.15:/root/.euca/* euca
+The authenticity of host '172.16.34.15 (172.16.34.15)' can't be established.
+RSA key fingerprint is 0b:42:b8:3c:fe:b0:8d:97:b8:ed:8f:58:05:65:a2:a1.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.16.34.15' (RSA) to the list of known hosts.
+root@172.16.34.15's password: 
+admin.zip                                                                                                                            100% 5239     5.1KB/s   00:00    
+cloud-cert.pem                                                                                                                       100% 1188     1.2KB/s   00:00    
+euca2-admin-f8fc6e4e-pk.pem                                                                                                          100% 1712     1.7KB/s   00:00    
+euca2-admin-f8fc6e4e-cert.pem                                                                                                        100% 1172     1.1KB/s   00:00    
+euca2-abu-b13727ff-pk.pem                                                                                                            100% 1712     1.7KB/s   00:00    
+iamrc                                                                                                                                100%   89     0.1KB/s   00:00    
+euca2-abu-x509.zip                                                                                                                   100% 5271     5.2KB/s   00:00    
+cloud-cert.pem                                                                                                                       100% 1188     1.2KB/s   00:00    
+jssecacerts                                                                                                                          100%  903     0.9KB/s   00:00    
+eucarc                                                                                                                               100% 1397     1.4KB/s   00:00    
+euca2-abu-b13727ff-cert.pem                                                                                                          100% 1168     1.1KB/s   00:00    
+euca2-syeda-x509.zip                                                                                                                 100% 5237     5.1KB/s   00:00    
+iamrc                                                                                                                                100%   89     0.1KB/s   00:00    
+euca2-syeda-77025663-pk.pem                                                                                                          100% 1712     1.7KB/s   00:00    
+cloud-cert.pem                                                                                                                       100% 1188     1.2KB/s   00:00    
+jssecacerts                                                                                                                          100%  903     0.9KB/s   00:00    
+eucarc                                                                                                                               100% 1401     1.4KB/s   00:00    
+euca2-syeda-77025663-cert.pem                                                                                                        100% 1172     1.1KB/s   00:00    
+cse491key                                                                                                                            100% 1754     1.7KB/s   00:00    
+euca2-admin-x509.zip                                                                                                                 100% 5239     5.1KB/s   00:00    
+iamrc                                                                                                                                100%   89     0.1KB/s   00:00    
+cloud-cert.pem                                                                                                                       100% 1188     1.2KB/s   00:00    
+jssecacerts                                                                                                                          100%  903     0.9KB/s   00:00    
+eucarc                                                                                                                               100% 1401     1.4KB/s   00:00    
+deleuca.sh                                                                                                                           100%  258     0.3KB/s   00:00    
+euca2-admin-2af2dea5-cert.pem                                                                                                        100% 1172     1.1KB/s   00:00    
+euca2-admin-2af2dea5-pk.pem                                                                                                          100% 1712     1.7KB/s   00:00    
+euca2-admin-cb811d75-cert.pem                                                                                                        100% 1172     1.1KB/s   00:00    
+euca2-admin-cb811d75-pk.pem                                                                                                          100% 1712     1.7KB/s   00:00    
+euca-centos6.4-ec2user-2013.07.12-x86_64.tgz                                                                                         100%  416MB  46.2MB/s   00:09    
+eucarc                                                                                                                               100% 1401     1.4KB/s   00:00    
+iamrc                                                                                                                                100%   89     0.1KB/s   00:00    
+jssecacerts                                                                                                                          100%  903     0.9KB/s   00:00    
+sshlogin                                                                                                                             100% 1757     1.7KB/s   00:00    
+[root@ip-10-10-43-101 eucapp]# cd euca
+[root@ip-10-10-43-101 euca]# rm euca-centos6.4-ec2user-2013.07.12-x86_64.tgz 
+rm: remove regular file `euca-centos6.4-ec2user-2013.07.12-x86_64.tgz'? y
+[root@ip-10-10-43-101 euca]# source eucarc 
+[root@ip-10-10-43-101 euca]# cd ..
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.listen.9CJsLv","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.lock.bCqbgm","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.name_bind.xkDVKc","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.node_bind.plbHf3","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.read.Na4tKT","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.recv_msg.Q9hifK","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.recvfrom.VQS7JA","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.relabelfrom.YoOYer","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.relabelto.hX5QJh","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.send_msg.dpHKe8","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.sendto.53DFJY","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.setattr.cXbCeP","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.setopt.yrlHgH","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.shutdown.OZASiz","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/rawip_socket/perms/.write.N8H7kr","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/.index.EfJtnj","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/perms/.check_context.LBzVpb","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/perms/.compute_av.4gWqs3","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/perms/.compute_create.XwUZuV","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/perms/.compute_member.RSPCxN","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/perms/.compute_relabel.EytjAF","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/perms/.compute_user.OGB3Cx","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/perms/.load_policy.aDcrGp","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/perms/.read_policy.MgNSJh","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/perms/.setbool.ObooN9","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/perms/.setcheckreqprot.jWRXQ1","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/perms/.setenforce.xXTAUT","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/security/perms/.setsecparam.MauhYL","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sem","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sem/.index.huj41D","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sem/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sem/perms/.associate.g75T5v","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sem/perms/.create.9zfL9n","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sem/perms/.destroy.eVJDdg","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sem/perms/.getattr.pLAxh8","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sem/perms/.read.JVLsl0","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sem/perms/.setattr.MilppS","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sem/perms/.unix_read.actntK","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sem/perms/.unix_write.Bc2mxC","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sem/perms/.write.OrYnBu","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/shm","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/shm/.index.NFOqFm","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/shm/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/shm/perms/.associate.sryvJe","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/shm/perms/.create.RhEBN6","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/shm/perms/.destroy.j57IRY","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/shm/perms/.getattr.I0WRVQ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/shm/perms/.lock.t681ZI","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/shm/perms/.read.SjRd4A","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/shm/perms/.setattr.YwUq8s","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/shm/perms/.unix_read.bQoFcl","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/shm/perms/.unix_write.8JeVgd","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/shm/perms/.write.SBocl5","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/.index.zDtvpX","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.append.5euQtP","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.create.npScyH","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.execute.jsCACz","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.getattr.xtUZGr","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.ioctl.klzqLj","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.link.6CFSPb","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.lock.1N6lU3","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.mounton.HtUQYV","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.open.EQ3m3N","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.quotaon.KDxU7F","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.read.g6ltcy","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.relabelfrom.Kfv3gq","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.relabelto.3y0Eli","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.rename.7K2hqa","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.setattr.4XqWu2","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.swapon.xtfCzU","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.unlink.TyrjEM","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/sock_file/perms/.write.NG21IE","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/.index.9BzMNw","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.accept.MaZySo","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.append.l6KmXg","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.bind.lQRb28","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.connect.rzu260","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.create.pnuUbT","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.getattr.oEVNgL","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.getopt.WJHIlD","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.ioctl.0cPEqv","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.listen.ndjCvn","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.lock.0e7AAf","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.name_bind.T9eBF7","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.read.S9GCKZ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.recv_msg.20tFPR","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.recvfrom.zaGJUJ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.relabelfrom.ITqPZB","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.relabelto.y6AW4t","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.send_msg.1O749l","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.sendto.PyYefe","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.setattr.L1cqk6","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.setopt.WqMCpY","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.shutdown.fQHQuQ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/socket/perms/.write.0rX5zI","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/system","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/system/.index.0mbnFA","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/system/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/system/perms/.ipc_info.m8DG9t","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/system/perms/.module_request.nnj4Dn","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/system/perms/.syslog_console.9bWu8g","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/system/perms/.syslog_mod.1J83Ca","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/system/perms/.syslog_read.7wXL73","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/.index.DTNzCX","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.accept.vFDs7Q","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.acceptfrom.l6KpCK","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.append.Drpq7D","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.bind.FywuCx","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.connect.Fz9B7q","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.connectto.f6VNCk","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.create.umf37d","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.getattr.6DZlD7","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.getopt.UIBI80","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.ioctl.ilk9DU","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.listen.TTxD9N","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.lock.aadbFH","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.name_bind.uAZMaB","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.name_connect.BCjsGu","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.newconn.K0fbco","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.node_bind.LgDXHh","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.read.11hOdb","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.recv_msg.wkqIJ4","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.recvfrom.8L0FfY","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.relabelfrom.6B4GLR","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.relabelto.BAhMhL","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.send_msg.xMVUNE","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.sendto.H406jy","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.setattr.6DwmQr","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.setopt.YReGml","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.shutdown.P0q3Se","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tcp_socket/perms/.write.SHMfq8","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/.index.QHcxX1","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.accept.XStTuV","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.append.rpYn2O","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.bind.UP9XzI","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.connect.KI7C7B","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.create.JMXjFv","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.getattr.EGc2cp","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.getopt.0QNLKi","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.ioctl.5LKwic","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.listen.TX2iQ5","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.lock.4GH6nZ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.name_bind.3XWVVS","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.read.URFMtM","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.recv_msg.0bME1F","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.recvfrom.bqdyzz","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.relabelfrom.Q1Zs7s","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.relabelto.uvapFm","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.send_msg.d5Gmdg","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.sendto.VKzlL9","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.setattr.9CNlj3","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.setopt.zAmnRW","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.shutdown.LszqpQ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/tun_socket/perms/.write.tdevXJ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/.index.a2OBvD","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.accept.I3iK3w","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.append.Q88TBq","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.bind.lpl59j","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.connect.RcThId","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.create.W5Mvg7","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.getattr.JE0KO0","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.getopt.HUy1mU","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.ioctl.nFGjVN","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.listen.rdfDtH","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.lock.tF8X1A","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.name_bind.wnpkAu","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.node_bind.Gd1H8n","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.read.4UX6Gh","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.recv_msg.jsixfb","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.recvfrom.gnYYN4","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.relabelfrom.VKYrmY","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.relabelto.HmkWUR","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.send_msg.IzfstL","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.sendto.nRAZ1E","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.setattr.zjhyAy","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.setopt.Tbj88r","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.shutdown.s7FJHl","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/udp_socket/perms/.write.abpmgf","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/.index.8n30O8","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.accept.6GzHn2","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.append.tc1f1W","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.bind.rvLSER","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.connect.zcryiM","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.create.7lamWG","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.getattr.o9GhAB","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.getopt.B52hew","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.ioctl.nj0lSq","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.listen.r0ptwl","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.lock.MYQEag","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.name_bind.un0TOa","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.read.skAct5","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.recv_msg.c9Dy7Z","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.recvfrom.TDMYLU","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.relabelfrom.FZssqP","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.relabelto.MACZ4J","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.send_msg.PndAJE","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.sendto.YPYeoz","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.setattr.13eX2t","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.setopt.W4WIHo","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.shutdown.pN7xmj","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_dgram_socket/perms/.write.4nAr1d","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/.index.9w4pG8","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.accept.Ic8Al3","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.acceptfrom.kYAN0X","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.append.4ds1FS","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.bind.idFglN","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.connect.N8dx0H","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.connectto.4nkPFC","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.create.HJS8kx","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.getattr.6dOt0r","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.getopt.wj9PFm","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.ioctl.zwRdlh","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.listen.FTUC0b","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.lock.qll3F6","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.name_bind.wo5ul1","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.newconn.iMaY0V","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.read.VDGsGQ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.recv_msg.kvKYlL","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.recvfrom.cCfw1F","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.relabelfrom.LX64GA","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.relabelto.EtjFmv","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.send_msg.zJSg2p","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.sendto.wxMTHk","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.setattr.Sk1xnf","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.setopt.mMAd39","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.shutdown.ZFwUI4","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/unix_stream_socket/perms/.write.sQNCoZ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_application_data","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_application_data/.index.xeyn4T","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_application_data/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_application_data/perms/.copy.KQPkKO","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_application_data/perms/.paste.7eSkqJ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_application_data/perms/.paste_after_confirm.Bxfn6D","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_client","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_client/.index.KBvsMy","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_client/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_client/perms/.destroy.BIKzst","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_client/perms/.getattr.ASmI8n","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_client/perms/.manage.gZkSOi","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_client/perms/.setattr.B4O3ud","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_colormap","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_colormap/.index.9Cohb8","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_colormap/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_colormap/perms/.add_color.IySwR2","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_colormap/perms/.create.dBINxX","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_colormap/perms/.destroy.ZVT5dS","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_colormap/perms/.getattr.vTppUM","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_colormap/perms/.install.okiKAH","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_colormap/perms/.read.yJu6gC","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_colormap/perms/.remove_color.dF2tXw","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_colormap/perms/.uninstall.O2WSDr","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_colormap/perms/.use.TDqjkm","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_colormap/perms/.write.F7kL0g","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_cursor","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_cursor/.index.U6afHb","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_cursor/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_cursor/perms/.create.9WWKn6","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_cursor/perms/.destroy.qR4h40","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_cursor/perms/.getattr.dtxQKV","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_cursor/perms/.read.iAlqrQ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_cursor/perms/.setattr.GBt17K","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_cursor/perms/.use.VLWDOF","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_cursor/perms/.write.OwYhvA","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/.index.F30Xbv","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.add.5FXFSp","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.bell.KWgpzk","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.create.lOU9ff","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.destroy.4RtW0a","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.force_cursor.uM8ML6","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.freeze.9JpFw2","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.get_property.LGhzhY","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.getattr.M2rv2T","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.getfocus.B2ztNP","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.grab.5HotyL","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.list_property.c9KujH","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.manage.9ozx4C","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.read.0oPBPy","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.remove.dNwHAu","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.set_property.mVEOlq","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.setattr.ZygX6l","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.setfocus.Tdj7Rh","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.use.2TYiDd","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_device/perms/.write.i7cwo9","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/.index.UrAL94","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.add_child.tMz3U0","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.blend.Gr2mGW","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.create.14WHrS","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.destroy.l2h4cO","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.get_property.pt7rYJ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.getattr.2MDRJF","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.hide.kZKivB","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.list_child.ockLgx","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.list_property.gdkf2s","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.manage.AwMKNo","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.override.GbHhzk","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.read.r92Pkg","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.receive.cJTp6b","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.remove_child.Keb1R7","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.send.Y4TDD3","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.set_property.WmjipZ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.setattr.3LhYaV","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.show.ByHFWQ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_drawable/perms/.write.KYyoIM","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_event","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_event/.index.m5U9tI","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_event/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_event/perms/.receive.nWqXfE","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_event/perms/.send.c3oM1z","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_extension","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_extension/.index.HY4DNv","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_extension/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_extension/perms/.query.EDXxzr","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_extension/perms/.use.R8itln","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_font","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_font/.index.B69q7i","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_font/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_font/perms/.add_glyph.SxvrTe","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_font/perms/.create.wQmtFa","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_font/perms/.destroy.rfFwr6","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_font/perms/.getattr.9sBBd2","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_font/perms/.remove_glyph.WF7HZX","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_font/perms/.use.eu6PLT","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_gc","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_gc/.index.iHx0xP","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_gc/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_gc/perms/.create.LpQdkL","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_gc/perms/.destroy.i4Bs6G","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_gc/perms/.getattr.zvPISC","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_gc/perms/.setattr.k6v0Ey","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_gc/perms/.use.XfRjru","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/.index.2UrFdq","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.add.bEc5Zl","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.bell.FmtwMh","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.create.3GbZyd","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.destroy.5Zktl9","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.force_cursor.TAVY74","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.freeze.AMbwU0","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.get_property.MVs5GW","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.getattr.1rOGtS","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.getfocus.r28jgO","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.grab.PfsZ2J","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.list_property.dDJGPF","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.manage.yn0pCB","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.read.6Yxbpx","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.remove.34kZbt","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.set_property.wn7OYo","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.setattr.RwRGLk","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.setfocus.IEBAyg","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.use.lOkwlc","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_keyboard/perms/.write.tw2t87","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/.index.Zb4uV3","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.add.7cVyIZ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.bell.viREvV","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.create.dWMMiR","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.destroy.7XHW5M","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.force_cursor.ViB8SI","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.freeze.QjWmGE","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.get_property.REjDtA","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.getattr.zaHVgw","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.getfocus.Ej3f4r","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.grab.kWtCRn","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.list_property.jMZ0Ej","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.manage.iJQrsf","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.read.5DSUfb","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.remove.alWp36","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.set_property.iTYWQ2","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.setattr.oC4vEY","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.setfocus.knf7rU","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.use.KYqKfQ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_pointer/perms/.write.854p3L","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_property","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_property/.index.mkG8QH","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_property/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_property/perms/.append.IhaUED","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_property/perms/.create.MEJHsz","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_property/perms/.destroy.3Mjxgv","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_property/perms/.getattr.auUo4q","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_property/perms/.read.wFXiSm","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_property/perms/.setattr.nz7eGi","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_property/perms/.write.Rgkdue","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_resource","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_resource/.index.NSqeia","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_resource/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_resource/perms/.read.RVmi65","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_resource/perms/.write.GhCoU1","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_screen","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_screen/.index.i4WxIX","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_screen/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_screen/perms/.getattr.TZdKwT","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_screen/perms/.hide_cursor.x3wYkP","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_screen/perms/.saver_getattr.hqRe9K","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_screen/perms/.saver_hide.NQcxXG","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_screen/perms/.saver_setattr.rySRLC","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_screen/perms/.saver_show.l4JeAy","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_screen/perms/.setattr.FxCDou","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_screen/perms/.show_cursor.oUv4cq","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_selection","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_selection/.index.8zxy1l","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_selection/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_selection/perms/.getattr.I0n5Ph","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_selection/perms/.read.NXOEEd","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_selection/perms/.setattr.G3jgt9","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_selection/perms/.write.KoQTh5","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_server","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_server/.index.O01A60","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_server/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_server/perms/.debug.7m5kVW","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_server/perms/.getattr.Bxw7JS","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_server/perms/.grab.wtqWyO","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_server/perms/.manage.ENMMnK","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_server/perms/.record.uGtEcG","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_server/perms/.setattr.BBzx1B","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_synthetic_event","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_synthetic_event/.index.xtNsQx","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_synthetic_event/perms","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_synthetic_event/perms/.receive.tdgqFt","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/class/x_synthetic_event/perms/.send.296oup","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.any_socket.pDjrjl","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.devnull.q9Ru8g","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.file.SRLzXc","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.file_labels.Qn2FM8","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.fs.oOCNB4","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.icmp_socket.E8wWq0","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.igmp_packet.prK6fW","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.init.7Bii5R","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.kernel.MI9uUN","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.kmod.OQyJJJ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.netif.eZnZyF","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.netmsg.DrwgoB","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.node.lEYydx","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.policy.2jKS2s","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.port.aqPdSo","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.scmp_packet.t9cAHk","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.security.lzWXwg","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.sysctl.jH0mmc","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.sysctl_dev.rboNb8","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.sysctl_fs.91lf13","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.sysctl_kernel.xNIIQZ","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.sysctl_modprobe.2rqdGV","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.sysctl_net.HLtJvR","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.sysctl_net_unix.NhRglN","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.sysctl_vm.osedwK","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.tcp_socket.X0QgHH","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/initial_contexts/.unlabeled.gF0oSE","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/policy_capabilities","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/policy_capabilities/.network_peer_controls.qfkF3B","security.selinux") failed: Permission denied (13)
+rsync: rsync_xal_set: lsetxattr("selinux/policy_capabilities/.open_perms.zinZez","security.selinux") failed: Permission denied (13)
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1039) [sender=3.0.6]
+ warning: rsync reports files partially copied
+ done
+Bundling image 100% |=============================================================================================================|   4.00 GB  39.97 MB/s Time: 0:01:47
+euca-bundle-vol: error: Directory not empty: /mnt/bundle
+Wrote /mnt/bundle/django-05.part.0
+Wrote /mnt/bundle/django-05.part.1
+Wrote /mnt/bundle/django-05.part.2
+Wrote /mnt/bundle/django-05.part.3
+Wrote /mnt/bundle/django-05.part.4
+Wrote /mnt/bundle/django-05.part.5
+Wrote /mnt/bundle/django-05.part.6
+Wrote /mnt/bundle/django-05.part.7
+Wrote /mnt/bundle/django-05.part.8
+Wrote /mnt/bundle/django-05.part.9
+Wrote /mnt/bundle/django-05.part.10
+Wrote /mnt/bundle/django-05.part.11
+Wrote /mnt/bundle/django-05.part.12
+Wrote /mnt/bundle/django-05.part.13
+Wrote /mnt/bundle/django-05.part.14
+Wrote /mnt/bundle/django-05.part.15
+Wrote /mnt/bundle/django-05.part.16
+Wrote /mnt/bundle/django-05.part.17
+Wrote /mnt/bundle/django-05.part.18
+Wrote /mnt/bundle/django-05.part.19
+Wrote /mnt/bundle/django-05.part.20
+Wrote /mnt/bundle/django-05.part.21
+Wrote /mnt/bundle/django-05.part.22
+Wrote /mnt/bundle/django-05.part.23
+Wrote /mnt/bundle/django-05.part.24
+Wrote /mnt/bundle/django-05.part.25
+Wrote /mnt/bundle/django-05.part.26
+Wrote /mnt/bundle/django-05.part.27
+Wrote /mnt/bundle/django-05.part.28
+Wrote /mnt/bundle/django-05.part.29
+Wrote /mnt/bundle/django-05.part.30
+Wrote /mnt/bundle/django-05.part.31
+Wrote /mnt/bundle/django-05.part.32
+Wrote manifest /mnt/bundle/django-05.manifest.xml
+[root@ip-10-10-43-101 eucapp]# 
+/////////////////////////////////////////////////
+[root@ip-10-10-43-101 eucapp]#  euca-upload-bundle -b django-05 -m ./bundle/django-05.manifest.xml 
+euca-upload-bundle: error: No such file or directory: ./bundle/django-05.manifest.xml
+[root@ip-10-10-43-101 eucapp]#  euca-upload-bundle -b django-05 -m /mnt/bundle/django-05.manifest.xml 
+django-05.part.0  ( 1/33) 100% |==================================================================================================|  10.00 MB  34.84 MB/s Time: 0:00:00
+django-05.part.1  ( 2/33) 100% |==================================================================================================|  10.00 MB  43.90 MB/s Time: 0:00:00
+django-05.part.2  ( 3/33) 100% |==================================================================================================|  10.00 MB  42.37 MB/s Time: 0:00:00
+django-05.part.3  ( 4/33) 100% |==================================================================================================|  10.00 MB  42.30 MB/s Time: 0:00:00
+django-05.part.4  ( 5/33) 100% |==================================================================================================|  10.00 MB  40.71 MB/s Time: 0:00:00
+django-05.part.5  ( 6/33) 100% |==================================================================================================|  10.00 MB  40.84 MB/s Time: 0:00:00
+django-05.part.6  ( 7/33) 100% |==================================================================================================|  10.00 MB  44.35 MB/s Time: 0:00:00
+django-05.part.7  ( 8/33) 100% |==================================================================================================|  10.00 MB  40.69 MB/s Time: 0:00:00
+django-05.part.8  ( 9/33) 100% |==================================================================================================|  10.00 MB  39.01 MB/s Time: 0:00:00
+django-05.part.9  (10/33) 100% |==================================================================================================|  10.00 MB  48.45 MB/s Time: 0:00:00
+django-05.part.10 (11/33) 100% |==================================================================================================|  10.00 MB  46.49 MB/s Time: 0:00:00
+django-05.part.11 (12/33) 100% |==================================================================================================|  10.00 MB  40.60 MB/s Time: 0:00:00
+django-05.part.12 (13/33) 100% |==================================================================================================|  10.00 MB  42.67 MB/s Time: 0:00:00
+django-05.part.13 (14/33) 100% |==================================================================================================|  10.00 MB  44.24 MB/s Time: 0:00:00
+django-05.part.14 (15/33) 100% |==================================================================================================|  10.00 MB  42.49 MB/s Time: 0:00:00
+django-05.part.15 (16/33) 100% |==================================================================================================|  10.00 MB  39.26 MB/s Time: 0:00:00
+django-05.part.16 (17/33) 100% |==================================================================================================|  10.00 MB  40.82 MB/s Time: 0:00:00
+django-05.part.17 (18/33) 100% |==================================================================================================|  10.00 MB  42.40 MB/s Time: 0:00:00
+django-05.part.18 (19/33) 100% |==================================================================================================|  10.00 MB  39.23 MB/s Time: 0:00:00
+django-05.part.19 (20/33) 100% |==================================================================================================|  10.00 MB  40.82 MB/s Time: 0:00:00
+django-05.part.20 (21/33) 100% |==================================================================================================|  10.00 MB  40.86 MB/s Time: 0:00:00
+django-05.part.21 (22/33) 100% |==================================================================================================|  10.00 MB  40.58 MB/s Time: 0:00:00
+django-05.part.22 (23/33) 100% |==================================================================================================|  10.00 MB  46.08 MB/s Time: 0:00:00
+django-05.part.23 (24/33) 100% |==================================================================================================|  10.00 MB  37.63 MB/s Time: 0:00:00
+django-05.part.24 (25/33) 100% |==================================================================================================|  10.00 MB  40.60 MB/s Time: 0:00:00
+django-05.part.25 (26/33) 100% |==================================================================================================|  10.00 MB  42.28 MB/s Time: 0:00:00
+django-05.part.26 (27/33) 100% |==================================================================================================|  10.00 MB  40.66 MB/s Time: 0:00:00
+django-05.part.27 (28/33) 100% |==================================================================================================|  10.00 MB  36.24 MB/s Time: 0:00:00
+django-05.part.28 (29/33) 100% |==================================================================================================|  10.00 MB  42.63 MB/s Time: 0:00:00
+django-05.part.29 (30/33) 100% |==================================================================================================|  10.00 MB  40.74 MB/s Time: 0:00:00
+django-05.part.30 (31/33) 100% |==================================================================================================|  10.00 MB  44.06 MB/s Time: 0:00:00
+django-05.part.31 (32/33) 100% |==================================================================================================|  10.00 MB  42.25 MB/s Time: 0:00:00
+django-05.part.32 (33/33) 100% |==================================================================================================|   1.61 MB  10.96 MB/s Time: 0:00:00
+django-05.manifest.xml 100% |=====================================================================================================|   8.03 kB  47.04 kB/s Time: 0:00:00
+Uploaded django-05/django-05.manifest.xml
+///////////////////////////////////////////////////////////////////////
+[root@ip-10-10-43-101 euca]# euca-register django-05/django-05.manifest.xml -n django05
+IMAGE	emi-D0053BFA
+
+//////////////////////////////
+[root@ip-10-10-43-101 euca]# euscale-create-launch-config -i emi-D0053BFA -t m1.small --key sshlogin  imagecrud 
+[root@ip-10-10-43-101 euca]# eulb-create-lb -l "lb-port=80, protocol=HTTP, instance-port=80" -z PARTI00 imagecrud
+DNS_NAME	imagecrud-943323387200.lb.localhost
+[root@ip-10-10-43-101 euca]# euscale-create-auto-scaling-group -l imagecrud -M 10 -m 1 --desired-capacity 1 --load-balancers imagecrud -z PARTI00 imagecrud
+[root@ip-10-10-43-101 euca]# euscale-describe-scaling-activities
+ACTIVITY	39333cc7-c265-4a09-9ee7-f6e67548b403	2014-04-16T13:46:21.367Z	imagecrud	Successful	
+ACTIVITY	74026f6c-90ac-4c31-8752-17de25bb2991	2014-04-16T13:45:41.487Z	asg-euca-internal-elb-943323387200-imagecrud	Successful	
+ACTIVITY	7809c7a5-7f1c-432f-b0f6-ff077132863a	2014-03-25T00:01:19.383Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	0a0bd039-f1f8-45ff-a564-92ca829e8233	2014-03-24T23:46:19.331Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	0f587854-e593-433e-b021-9b572ef7e497	2014-03-24T23:31:09.097Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	2b514875-ef57-4f0a-8e4c-4ba8bcd4b32c	2014-03-24T23:15:59.316Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	fa0e0d95-fa59-457c-8917-0736d67b356d	2014-03-24T23:00:59.334Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	2f14e9ad-08c8-4cd6-8bb8-f4746ec74a68	2014-03-24T22:45:49.143Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	63c123a9-b28c-44ac-8e61-d2d3dd7687b8	2014-03-24T22:30:39.403Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	7b9721dc-b643-4bbb-a8d4-69081e1e8434	2014-03-24T22:15:39.409Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	352f4fcd-4ed2-4b1b-9b28-063e5f3b5178	2014-03-24T22:00:39.269Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	bd6c61e7-d218-4e73-bb0e-6074f52d59ce	2014-03-24T21:50:59.201Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	e3730bc8-f72e-4b28-a729-985bb6c5dc91	2014-03-24T21:46:09.181Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	72dcc33f-e5ad-46fa-91c3-f5108601f3bf	2014-03-24T21:43:39.404Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	3b7385ff-1684-4321-9e80-90668deb0648	2014-03-24T21:42:19.482Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	ccccfbba-0ceb-45fa-a30f-8ecb14d08d5b	2014-03-24T21:41:41.242Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	1b963501-11d9-4e8d-a70d-b56f275d93fb	2014-03-24T21:41:20.193Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	c6a9a0ce-0e30-4fba-a1e5-ac5c2ad0569f	2014-03-24T21:41:09.570Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources: no cluster controller is currently available to run instances.
+ACTIVITY	fc7e6296-b165-4b5e-a1d3-a610b52dc6a0	2014-03-24T04:20:54.722Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	d35f65d3-9937-4ab2-adec-480a234a420d	2014-03-24T04:05:54.769Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	94e6321d-2abd-4d99-91ba-78b27e9f4dd6	2014-03-24T03:50:45.032Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	d9d346c7-a75c-42ea-b6ed-0bc95731217d	2014-03-24T03:35:34.737Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	c9c0ed2a-576d-43fa-b97b-b994b7a1e1c0	2014-03-24T03:20:34.881Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	24313e41-64a0-4a0e-957f-ea7d9c7a74b3	2014-03-24T03:05:25.037Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	95b262e1-d6b5-4896-83b6-f44ec65221df	2014-03-24T02:50:14.912Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	2bed8ba5-434e-4c2b-86da-31618b0d920b	2014-03-24T02:35:14.851Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	b64f74ea-dffe-4dba-846a-43c7bc479c77	2014-03-24T02:20:05.051Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	31be4705-b21f-4325-9b02-ce8c9f635761	2014-03-24T02:04:54.871Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	72cd7d85-26d6-4df1-9b28-aa076d2f420f	2014-03-24T01:49:54.916Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	478b5ab0-ef86-4302-aff5-147feeb239c9	2014-03-24T01:34:44.916Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	bfdaed0a-ccea-4207-9c78-2bb9262992d4	2014-03-24T01:19:34.593Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	76023a06-8ff9-4ad8-87f3-2b6470364ff2	2014-03-24T01:04:34.518Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	d09b20cf-434f-485e-ac10-b337013c9568	2014-03-24T00:49:24.822Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	30ff8179-5858-4c78-8814-0d23f298897d	2014-03-24T00:34:14.669Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	31ab185a-def2-4a1e-8e8a-54769f42c06b	2014-03-24T00:19:04.869Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	91870f8e-1066-4821-bae5-84d2506a6c60	2014-03-24T00:03:54.725Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	bda54b64-c5c6-40ea-b9d3-4ed2a985d0ee	2014-03-23T23:48:44.777Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	9396910a-429f-41ac-869b-5e2c51a7b541	2014-03-23T23:33:44.795Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	4c4727b2-431d-427b-aa95-4e1bd9cf7600	2014-03-23T23:18:34.634Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	b1048478-ec04-4e3d-a582-c2bea8592063	2014-03-23T23:03:24.968Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	92fbfab3-573d-4ea4-8e3d-4d8367d34968	2014-03-23T22:48:24.693Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	c51af2cf-55aa-4c0e-8c42-32c7303b0a7a	2014-03-23T22:33:14.706Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	469cd378-8a57-40a3-bcf1-76aab76d7e58	2014-03-23T22:18:04.794Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	2d5447de-d29d-41d5-bbc5-7fab7b8fa2cd	2014-03-23T22:02:54.705Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	1c7f605f-405e-4ca8-810b-2127e07e624f	2014-03-23T21:47:54.669Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	57da453a-6259-4c9e-a734-db069f483152	2014-03-23T21:38:14.731Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	5dcae545-ef20-4b53-8d8f-9ff1d281cce1	2014-03-23T21:33:24.791Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	5497bbfc-c733-49a1-8b44-06b8f8383176	2014-03-23T21:30:54.706Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	575c6e17-825a-4c59-883e-446b40f6bb46	2014-03-23T21:29:34.762Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	9dd4b799-5449-4683-9a2b-ae8596b656b8	2014-03-23T21:28:54.721Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	29cdc74e-199e-4306-a751-960a52dd3182	2014-03-23T21:28:34.835Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	3eeb1926-7d3d-4707-86e8-c5b5f9f74b0d	2014-03-23T21:28:16.570Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Failed	Failed to send message RunInstancesType to service EucalyptusRequestQueueSync because: Not enough resources (0 in PARTI00 < 1): vm instances.
+ACTIVITY	a11707b5-da1c-4a65-beab-7332da5b640e	2014-03-23T21:28:15.352Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Successful	
+ACTIVITY	8ad5bd73-8acb-40cd-9ff2-a31f21ea5930	2014-03-22T13:11:21.914Z	asg-euca-internal-elb-943323387200-MyLoadBalancer	Successful	
+[root@ip-10-10-43-101 euca]# 
+////////////////////////////////////////////
+
+[root@group4-15 .euca]# eulb-describe-instance-health --show-long imagecrud
+INSTANCE	i-53D4436B	OutOfService	Instance registration is still in progress.	ELB
+[root@group4-15 .euca]# 
+
+
+
+
+
+
+
+	

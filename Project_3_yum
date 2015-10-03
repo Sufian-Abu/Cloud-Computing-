@@ -1,0 +1,296 @@
+[student@group4-15 ~]$ su
+Password: 
+[root@group4-15 student]# cd /root/.euca
+[root@group4-15 .euca]# source eucarc
+[root@group4-15 .euca]# mkdir abu_azim_s3repo
+[root@group4-15 .euca]# cd abu_azim_s3repo
+
+////////////Downloading Mysql-python///////////////
+
+[root@group4-15 abu_azim_s3repo]# wget http://172.16.34.36/project1/p1/MySQL-python-1.2.3-0.3.c1.1.el6.x86_64.rpm
+--2014-04-19 18:46:41--  http://172.16.34.36/project1/p1/MySQL-python-1.2.3-0.3.c1.1.el6.x86_64.rpm
+Connecting to 172.16.34.36:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 87696 (86K) [application/x-rpm]
+Saving to: “MySQL-python-1.2.3-0.3.c1.1.el6.x86_64.rpm”
+
+100%[======================================>] 87,696      --.-K/s   in 0.001s  
+
+2014-04-19 18:46:41 (88.7 MB/s) - “MySQL-python-1.2.3-0.3.c1.1.el6.x86_64.rpm” saved [87696/87696]
+
+[root@group4-15 abu_azim_s3repo]# wget http://172.16.34.36/project1/p1/apr-1.3.9-5.el6_2.x86_64.rpm
+--2014-04-19 18:47:07--  http://172.16.34.36/project1/p1/apr-1.3.9-5.el6_2.x86_64.rpm
+Connecting to 172.16.34.36:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 126392 (123K) [application/x-rpm]
+Saving to: “apr-1.3.9-5.el6_2.x86_64.rpm”
+
+100%[==============================================================================================================================>] 126,392     --.-K/s   in 0.001s  
+
+2014-04-19 18:47:07 (81.9 MB/s) - “apr-1.3.9-5.el6_2.x86_64.rpm” saved [126392/126392]
+
+[root@group4-15 abu_azim_s3repo]# 
+
+////// Dwonloading apr-util//////////////
+
+[root@group4-15 abu_azim_s3repo]# wget http://172.16.34.36/project1/p1/apr-util-1.3.9-3.el6_0.1.x86_64.rpm
+--2014-04-20 15:51:51--  http://172.16.34.36/project1/p1/apr-util-1.3.9-3.el6_0.1.x86_64.rpm
+Connecting to 172.16.34.36:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 89340 (87K) [application/x-rpm]
+Saving to: “apr-util-1.3.9-3.el6_0.1.x86_64.rpm”
+
+100%[==============================================================================================================================>] 89,340      --.-K/s   in 0.001s  
+
+2014-04-20 15:51:51 (90.3 MB/s) - “apr-util-1.3.9-3.el6_0.1.x86_64.rpm” saved [89340/89340]
+
+[root@group4-15 abu_azim_s3repo]# wget http://172.16.34.36/project1/p1/git-1.7.1-3.el6_4.1.x86_64.rpm
+--2014-04-19 18:47:47--  http://172.16.34.36/project1/p1/git-1.7.1-3.el6_4.1.x86_64.rpm
+Connecting to 172.16.34.36:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 4829820 (4.6M) [application/x-rpm]
+Saving to: “git-1.7.1-3.el6_4.1.x86_64.rpm”
+
+100%[==============================================================================================================================>] 4,829,820   --.-K/s   in 0.04s   
+
+2014-04-19 18:47:47 (111 MB/s) - “git-1.7.1-3.el6_4.1.x86_64.rpm” saved [4829820/4829820]
+
+[root@group4-15 .euca]# ls
+abu_azim_s3repo  cloud-init-docker.config  docker                         euca2-admin-cb811d75-cert.pem                 eucarc       justcert
+admin.zip        cse491                    euca2-admin-2af2dea5-cert.pem  euca2-admin-cb811d75-pk.pem                   iamrc        sshlogin
+cloud-cert.pem   deleuca.sh                euca2-admin-2af2dea5-pk.pem    euca-centos6.4-ec2user-2013.07.12-x86_64.tgz  jssecacerts
+
+[root@group4-15 .euca]# createrepo abu_azim_s3repo/
+Spawning worker 0 with 3 pkgs
+Workers Finished
+Gathering worker results
+
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+[root@group4-15 .euca]# s3cmd -c s3cfg ls
+2014-04-06 03:15  s3://mybucket
+[root@group4-15 .euca]# s3cmd -c s3cfg mb s3://abu_azim_s3
+Bucket 's3://abu_azim_s3/' created
+[root@group4-15 .euca]# s3cmd -c s3cfg sync ./abu_azim_s3repo/ s3://abu_azim_s3
+WARNING: Module python-magic is not available. Guessing MIME types based on file extensions.
+./abu_azim_s3repo/MySQL-python-1.2.3-0.3.c1.1.el6.x86_64.rpm -> s3://abu_azim_s3/MySQL-python-1.2.3-0.3.c1.1.el6.x86_64.rpm  [1 of 10]
+ 87696 of 87696   100% in    0s   171.96 kB/s  done
+./abu_azim_s3repo/apr-1.3.9-5.el6_2.x86_64.rpm -> s3://abu_azim_s3/apr-1.3.9-5.el6_2.x86_64.rpm  [2 of 10]
+ 126392 of 126392   100% in    0s   458.92 kB/s  done
+./abu_azim_s3repo/git-1.7.1-3.el6_4.1.x86_64.rpm -> s3://abu_azim_s3/git-1.7.1-3.el6_4.1.x86_64.rpm  [3 of 10]
+ 4829820 of 4829820   100% in    0s    14.52 MB/s  done
+./abu_azim_s3repo/repodata/0ca3b33ec8bfac7471e458ea668208146d9186e38fa768343c85ae76951d90a7-primary.sqlite.bz2 -> s3://abu_azim_s3/repodata/0ca3b33ec8bfac7471e458ea668208146d9186e38fa768343c85ae76951d90a7-primary.sqlite.bz2  [4 of 10]
+ 5272 of 5272   100% in    0s    16.37 kB/s  done
+./abu_azim_s3repo/repodata/5c155d74ade761245d899d6593c6c9071dcc40cc71902f8a26aaf4e2e40af9c3-filelists.xml.gz -> s3://abu_azim_s3/repodata/5c155d74ade761245d899d6593c6c9071dcc40cc71902f8a26aaf4e2e40af9c3-filelists.xml.gz  [5 of 10]
+ 5433 of 5433   100% in    0s    17.26 kB/s  done
+./abu_azim_s3repo/repodata/905f299cfabe411d7811f776c8f4085a17bdd70d1dfb20534c2a785a620e79bf-other.sqlite.bz2 -> s3://abu_azim_s3/repodata/905f299cfabe411d7811f776c8f4085a17bdd70d1dfb20534c2a785a620e79bf-other.sqlite.bz2  [6 of 10]
+ 3239 of 3239   100% in    0s    10.31 kB/s  done
+./abu_azim_s3repo/repodata/a24883b000ec3f22f3a214d527ac9e292340e516a7c08051613f6be59b8effa9-other.xml.gz -> s3://abu_azim_s3/repodata/a24883b000ec3f22f3a214d527ac9e292340e516a7c08051613f6be59b8effa9-other.xml.gz  [7 of 10]
+ 2133 of 2133   100% in    0s     6.61 kB/s  done
+./abu_azim_s3repo/repodata/a726a490fc426c1bda2daeea587305dd1abe30f51eaf0632b99c392b7552692d-primary.xml.gz -> s3://abu_azim_s3/repodata/a726a490fc426c1bda2daeea587305dd1abe30f51eaf0632b99c392b7552692d-primary.xml.gz  [8 of 10]
+ 2236 of 2236   100% in    0s     7.30 kB/s  done
+./abu_azim_s3repo/repodata/a8f122befec907b29ca54080a4e9b17d8956abeb7e14515c18bbf3223c78fb40-filelists.sqlite.bz2 -> s3://abu_azim_s3/repodata/a8f122befec907b29ca54080a4e9b17d8956abeb7e14515c18bbf3223c78fb40-filelists.sqlite.bz2  [9 of 10]
+ 6545 of 6545   100% in    0s    20.90 kB/s  done
+./abu_azim_s3repo/repodata/repomd.xml -> s3://abu_azim_s3/repodata/repomd.xml  [10 of 10]
+ 2982 of 2982   100% in    0s     9.24 kB/s  done
+Done. Uploaded 5071748 bytes in 3.4 seconds, 1473.20 kB/s.  Copied 0 files saving 0 bytes transfer.
+
+/////////////////////////Making abu_azim_s3 public //////////////////////
+[root@group4-15 .euca]# s3cmd -c s3cfg setacl --acl-public -r s3://abu_azim_s3
+s3://abu_azim_s3/MySQL-python-1.2.3-0.3.c1.1.el6.x86_64.rpm: ACL set to Public  [1 of 10]
+s3://abu_azim_s3/apr-1.3.9-5.el6_2.x86_64.rpm: ACL set to Public  [2 of 10]
+s3://abu_azim_s3/git-1.7.1-3.el6_4.1.x86_64.rpm: ACL set to Public  [3 of 10]
+s3://abu_azim_s3/repodata/0ca3b33ec8bfac7471e458ea668208146d9186e38fa768343c85ae76951d90a7-primary.sqlite.bz2: ACL set to Public  [4 of 10]
+s3://abu_azim_s3/repodata/5c155d74ade761245d899d6593c6c9071dcc40cc71902f8a26aaf4e2e40af9c3-filelists.xml.gz: ACL set to Public  [5 of 10]
+s3://abu_azim_s3/repodata/905f299cfabe411d7811f776c8f4085a17bdd70d1dfb20534c2a785a620e79bf-other.sqlite.bz2: ACL set to Public  [6 of 10]
+s3://abu_azim_s3/repodata/a24883b000ec3f22f3a214d527ac9e292340e516a7c08051613f6be59b8effa9-other.xml.gz: ACL set to Public  [7 of 10]
+s3://abu_azim_s3/repodata/a726a490fc426c1bda2daeea587305dd1abe30f51eaf0632b99c392b7552692d-primary.xml.gz: ACL set to Public  [8 of 10]
+s3://abu_azim_s3/repodata/a8f122befec907b29ca54080a4e9b17d8956abeb7e14515c18bbf3223c78fb40-filelists.sqlite.bz2: ACL set to Public  [9 of 10]
+s3://abu_azim_s3/repodata/repomd.xml: ACL set to Public  [10 of 10]
+
+/////////Unzip master.zip//////////////////////////////
+
+[root@group4-15 Downloads]# unzip yum-s3-iam-master.zip
+Archive:  yum-s3-iam-master.zip
+3fe54a58db425ba0e8e99e7490dc71d569576885
+   creating: yum-s3-iam-master/
+  inflating: yum-s3-iam-master/.gitignore  
+  inflating: yum-s3-iam-master/LICENSE  
+  inflating: yum-s3-iam-master/Makefile  
+  inflating: yum-s3-iam-master/NOTICE  
+  inflating: yum-s3-iam-master/README.md  
+  inflating: yum-s3-iam-master/s3iam.conf  
+  inflating: yum-s3-iam-master/s3iam.py  
+  inflating: yum-s3-iam-master/s3iam.repo  
+  inflating: yum-s3-iam-master/tests.py  
+  inflating: yum-s3-iam-master/yum-plugin-s3-iam.spec  
+///////////////////////////////////////////////////////////////
+
+[root@group4-15 .euca]#  euca-run-instances -k sshlogin emi-4761358C
+RESERVATION	r-0F5543D5	943323387200	default
+INSTANCE	i-F7E4435E	emi-4761358C	0.0.0.0	0.0.0.0	pending	sshlogin	0		m1.small	2014-04-20T08:07:03.785Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	0.0.0.0	0.0.0.0			instance-store					paravirtualized			
+
+///////////////Creating keygen and login////////////////////
+
+[root@group4-15 .euca]# ssh-keygen -R 172.16.34.125
+/root/.ssh/known_hosts updated.
+Original contents retained as /root/.ssh/known_hosts.old
+[root@group4-15 .euca]# scp -i sshlogin /home/student/Downloads/yum-s3-iam-master/s3iam.conf ec2-user@172.16.34.125:
+The authenticity of host '172.16.34.125 (172.16.34.125)' can't be established.
+RSA key fingerprint is df:4f:3f:95:09:de:b0:7b:0e:f0:3a:7c:86:26:87:fd.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.16.34.125' (RSA) to the list of known hosts.
+s3iam.conf                                                                                                                            100%  656     0.6KB/s   00:00 
+///////// 
+
+     [root@group4-15 .euca]# scp -i sshlogin /home/student/Downloads/yum-s3-iam-master/s3iam.py ec2-user@172.16.34.125:
+s3iam.py                                                                                                                              100% 7946     7.8KB/s   00:00     
+/////////
+
+[root@ip-10-10-41-244 ec2-user]# cat /etc/yum.repos.d/abu_azim_s3repo.repo 
+[abu_azim_s3]
+name=abu_azim_s3
+baseurl=http://172.16.34.15:8773/services/Walrus/abu_azim_s3
+enabled=1
+gpgcheck=0
+
+////////////////////
+[root@ip-10-10-41-244 ec2-user]# yum clean all
+Loaded plugins: fastestmirror, s3iam
+Cleaning repos: abu_azim_s3 base epel euca2ools-release extras updates
+Cleaning up Everything
+Cleaning up list of fastest mirrors
+////////////////////////////////////
+
+
+[root@ip-10-10-41-244 ec2-user]# cd /etc/yum.repos.d/
+[root@ip-10-10-41-244 yum.repos.d]# cd /etc/yum.repos.d/
+[root@ip-10-10-41-244 yum.repos.d]# mv ./* ~/yumbackup
+[root@ip-10-10-41-244 yum.repos.d]# ls
+[root@ip-10-10-41-244 yum.repos.d]# mv ~/yumbackup/abu_azim_s3repo.repo ./
+[root@ip-10-10-41-244 yum.repos.d]# ls
+abu_azim_s3repo.repo
+[root@ip-10-10-41-244 yum.repos.d]# yum clean all
+Loaded plugins: fastestmirror, s3iam
+Cleaning repos: abu_azim_s3
+Cleaning up Everything
+
+/////////Search Mysql and installation mysql-pyhton///////////
+
+
+[root@ip-10-10-41-244 yum.repos.d]# yum search MySQL
+Loaded plugins: fastestmirror, s3iam
+Determining fastest mirrors
+abu_azim_s3                                                                                                                                      | 2.9 kB     00:00     
+abu_azim_s3/primary_db                                                                                                                           | 5.1 kB     00:00     
+========================================================================== N/S Matched: MySQL ==========================================================================
+MySQL-python.x86_64 : An interface to MySQL
+mysql-libs.x86_64 : The shared libraries required for MySQL clients
+
+  Name and summary matches only, use "search all" for everything.
+[root@ip-10-10-41-244 yum.repos.d]# 
+
+[root@ip-10-10-41-244 yum.repos.d]# yum install MySQL-python -y
+Loaded plugins: fastestmirror, s3iam
+Loading mirror speeds from cached hostfile
+Setting up Install Process
+Resolving Dependencies
+--> Running transaction check
+---> Package MySQL-python.x86_64 0:1.2.3-0.3.c1.1.el6 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================================================================
+ Package                                 Arch                              Version                                         Repository                              Size
+========================================================================================================================================================================
+Installing:
+ MySQL-python                            x86_64                            1.2.3-0.3.c1.1.el6                              abu_azim_s3                             86 k
+
+Transaction Summary
+========================================================================================================================================================================
+Install       1 Package(s)
+
+Total download size: 86 k
+Installed size: 246 k
+Downloading Packages:
+MySQL-python-1.2.3-0.3.c1.1.el6.x86_64.rpm                                                                                                       |  86 kB     00:00     
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : MySQL-python-1.2.3-0.3.c1.1.el6.x86_64                                                                                                               1/1 
+  Verifying  : MySQL-python-1.2.3-0.3.c1.1.el6.x86_64                                                                                                               1/1 
+
+Installed:
+  MySQL-python.x86_64 0:1.2.3-0.3.c1.1.el6                                                                                                                              
+
+Complete!
+/////////////////search apr and install apr-util//////////////
+
+[root@ip-10-10-41-244 yum.repos.d]# yum search apr
+Loaded plugins: fastestmirror, s3iam
+Loading mirror speeds from cached hostfile
+=========================================================================== N/S Matched: apr ===========================================================================
+apr.x86_64 : Apache Portable Runtime library
+
+  Name and summary matches only, use "search all" for everything.
+[root@ip-10-10-41-244 yum.repos.d]# 
+[root@ip-10-10-41-216 yum.repos.d]# yum install apr-util
+Loaded plugins: fastestmirror, s3iam
+Loading mirror speeds from cached hostfile
+Setting up Install Process
+Resolving Dependencies
+--> Running transaction check
+---> Package apr-util.x86_64 0:1.3.9-3.el6_0.1 will be installed
+--> Processing Dependency: libapr-1.so.0()(64bit) for package: apr-util-1.3.9-3.el6_0.1.x86_64
+--> Running transaction check
+---> Package apr.x86_64 0:1.3.9-5.el6_2 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================================================================
+ Package                               Arch                                Version                                       Repository                                Size
+========================================================================================================================================================================
+Installing:
+ apr-util                              x86_64                              1.3.9-3.el6_0.1                               abu_azim_s3                               87 k
+Installing for dependencies:
+ apr                                   x86_64                              1.3.9-5.el6_2                                 abu_azim_s3                              123 k
+
+Transaction Summary
+========================================================================================================================================================================
+Install       2 Package(s)
+
+Total download size: 211 k
+Installed size: 494 k
+Is this ok [y/N]: y
+Downloading Packages:
+(1/2): apr-1.3.9-5.el6_2.x86_64.rpm                                                                                                              | 123 kB     00:00     
+(2/2): apr-util-1.3.9-3.el6_0.1.x86_64.rpm                                                                                                       |  87 kB     00:00     
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                   1.7 MB/s | 211 kB     00:00     
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : apr-1.3.9-5.el6_2.x86_64                                                                                                                             1/2 
+  Installing : apr-util-1.3.9-3.el6_0.1.x86_64                                                                                                                      2/2 
+  Verifying  : apr-util-1.3.9-3.el6_0.1.x86_64                                                                                                                      1/2 
+  Verifying  : apr-1.3.9-5.el6_2.x86_64                                                                                                                             2/2 
+
+Installed:
+  apr-util.x86_64 0:1.3.9-3.el6_0.1                                                                                                                                     
+
+Dependency Installed:
+  apr.x86_64 0:1.3.9-5.el6_2                                                                                                                                            
+
+Complete!
+[root@ip-10-10-41-216 yum.repos.d]# 
+
+
+
+               

@@ -1,0 +1,261 @@
+[root@group4-15 .euca]# euca-run-instances -k sshlogin emi-4761358C
+RESERVATION	r-5BFA4511	943323387200	default
+INSTANCE	i-A1363EBE	emi-4761358C	0.0.0.0	0.0.0.0	pending	sshlogin	0		m1.small	2014-03-22T11:49:06.785Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	0.0.0.0	0.0.0.0			instance-store					paravirtualized			
+[root@group4-15 .euca]# euca-describe-instances
+RESERVATION	r-5BFA4511	943323387200	default
+INSTANCE	i-A1363EBE	emi-4761358C	172.16.34.125	10.10.66.125	running	sshlogin	0		m1.small	2014-03-22T11:49:06.785Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	172.16.34.125	10.10.66.125			instance-store					paravirtualized						
+TAG	instance	i-A1363EBE	euca:node	172.16.34.16
+[root@group4-15 .euca]# euca-allocate-address 
+ADDRESS	172.16.34.126	standard	
+[root@group4-15 .euca]# euca-associate-address -i i-A1363EBE 172.16.34.126
+ADDRESS	172.16.34.126	i-A1363EBE
+[root@group4-15 .euca]# euca-describe-instances
+RESERVATION	r-5BFA4511	943323387200	default
+INSTANCE	i-A1363EBE	emi-4761358C	172.16.34.126	10.10.66.125	running	sshlogin	0		m1.small	2014-03-22T11:49:06.785Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	172.16.34.126	10.10.66.125			instance-store					paravirtualized						
+TAG	instance	i-A1363EBE	euca:node	172.16.34.16
+[root@group4-15 .euca]# ping -t 0 172.16.34.126
+ping: can't set unicast time-to-live: Invalid argument
+[root@group4-15 .euca]# ping -t 5 172.16.34.126
+PING 172.16.34.126 (172.16.34.126) 56(84) bytes of data.
+64 bytes from 172.16.34.126: icmp_seq=1 ttl=64 time=0.273 ms
+64 bytes from 172.16.34.126: icmp_seq=2 ttl=64 time=0.256 ms
+64 bytes from 172.16.34.126: icmp_seq=3 ttl=64 time=0.251 ms
+64 bytes from 172.16.34.126: icmp_seq=4 ttl=64 time=0.262 ms
+64 bytes from 172.16.34.126: icmp_seq=5 ttl=64 time=0.272 ms
+64 bytes from 172.16.34.126: icmp_seq=6 ttl=64 time=0.235 ms
+64 bytes from 172.16.34.126: icmp_seq=7 ttl=64 time=0.252 ms
+^C
+--- 172.16.34.126 ping statistics ---
+7 packets transmitted, 7 received, 0% packet loss, time 6829ms
+rtt min/avg/max/mdev = 0.235/0.257/0.273/0.017 ms
+///////////////////////////////////////////////////elastic load balancing//////////////////////////////////////////////////////////////
+[root@group4-15 .euca]# ssh -i sshlogin ec2-user@172.16.34.125
+The authenticity of host '172.16.34.125 (172.16.34.125)' can't be established.
+RSA key fingerprint is 12:75:80:fb:3f:46:0a:9e:de:39:0b:0a:8f:7f:45:8d.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.16.34.125' (RSA) to the list of known hosts.
+[ec2-user@ip-10-10-66-84 ~]$ sudo su
+[root@ip-10-10-66-84 ec2-user]# mkdir ~/yumbackup
+[root@ip-10-10-66-84 ec2-user]# mv /etc/yum.repos.d/* ~/yumbackup
+[root@ip-10-10-66-84 ec2-user]# wget http://172.16.34.36/euca.repo --output-document=/etc/yum.repos.d/euca.repo
+bash: wget: command not found
+[root@ip-10-10-66-84 ec2-user]# yum install wget
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+Setting up Install Process
+No package wget available.
+Error: Nothing to do
+[root@ip-10-10-66-84 ec2-user]# vim /etc/yum.repos.d/euca.repo
+[root@ip-10-10-66-84 ec2-user]# cat /etc/yum.repos.d/euca.repo
+[euca-local]
+name=Eucalyptus
+baseurl=http://172.16.34.36/euca
+gpgcheck=0
+enabled=1
+[root@ip-10-10-66-84 ec2-user]# yum install httpd -y
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+euca-local                                                                                                                                      | 1.3 kB     00:00     
+euca-local/primary                                                                                                                              |  61 kB     00:00     
+euca-local                                                                                                                                                     125/125
+Setting up Install Process
+Resolving Dependencies
+--> Running transaction check
+---> Package httpd.x86_64 0:2.2.15-29.el6.centos will be installed
+--> Processing Dependency: httpd-tools = 2.2.15-29.el6.centos for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Processing Dependency: apr-util-ldap for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Processing Dependency: /etc/mime.types for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Processing Dependency: libaprutil-1.so.0()(64bit) for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Processing Dependency: libapr-1.so.0()(64bit) for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Running transaction check
+---> Package apr.x86_64 0:1.3.9-5.el6_2 will be installed
+---> Package apr-util.x86_64 0:1.3.9-3.el6_0.1 will be installed
+---> Package apr-util-ldap.x86_64 0:1.3.9-3.el6_0.1 will be installed
+---> Package httpd-tools.x86_64 0:2.2.15-29.el6.centos will be installed
+---> Package mailcap.noarch 0:2.1.31-2.el6 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=======================================================================================================================================================================
+ Package                                 Arch                             Version                                           Repository                            Size
+=======================================================================================================================================================================
+Installing:
+ httpd                                   x86_64                           2.2.15-29.el6.centos                              euca-local                           821 k
+Installing for dependencies:
+ apr                                     x86_64                           1.3.9-5.el6_2                                     euca-local                           123 k
+ apr-util                                x86_64                           1.3.9-3.el6_0.1                                   euca-local                            87 k
+ apr-util-ldap                           x86_64                           1.3.9-3.el6_0.1                                   euca-local                            15 k
+ httpd-tools                             x86_64                           2.2.15-29.el6.centos                              euca-local                            73 k
+ mailcap                                 noarch                           2.1.31-2.el6                                      euca-local                            27 k
+
+Transaction Summary
+=======================================================================================================================================================================
+Install       6 Package(s)
+
+Total download size: 1.1 M
+Installed size: 3.6 M
+Downloading Packages:
+(1/6): apr-1.3.9-5.el6_2.x86_64.rpm                                                                                                             | 123 kB     00:00     
+(2/6): apr-util-1.3.9-3.el6_0.1.x86_64.rpm                                                                                                      |  87 kB     00:00     
+(3/6): apr-util-ldap-1.3.9-3.el6_0.1.x86_64.rpm                                                                                                 |  15 kB     00:00     
+(4/6): httpd-2.2.15-29.el6.centos.x86_64.rpm                                                                                                    | 821 kB     00:00     
+(5/6): httpd-tools-2.2.15-29.el6.centos.x86_64.rpm                                                                                              |  73 kB     00:00     
+(6/6): mailcap-2.1.31-2.el6.noarch.rpm                                                                                                          |  27 kB     00:00     
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                   25 MB/s | 1.1 MB     00:00     
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : apr-1.3.9-5.el6_2.x86_64                                                                                                                            1/6 
+  Installing : apr-util-1.3.9-3.el6_0.1.x86_64                                                                                                                     2/6 
+  Installing : apr-util-ldap-1.3.9-3.el6_0.1.x86_64                                                                                                                3/6 
+  Installing : httpd-tools-2.2.15-29.el6.centos.x86_64                                                                                                             4/6 
+  Installing : mailcap-2.1.31-2.el6.noarch                                                                                                                         5/6 
+  Installing : httpd-2.2.15-29.el6.centos.x86_64                                                                                                                   6/6 
+  Verifying  : httpd-2.2.15-29.el6.centos.x86_64                                                                                                                   1/6 
+  Verifying  : apr-util-ldap-1.3.9-3.el6_0.1.x86_64                                                                                                                2/6 
+  Verifying  : httpd-tools-2.2.15-29.el6.centos.x86_64                                                                                                             3/6 
+  Verifying  : apr-1.3.9-5.el6_2.x86_64                                                                                                                            4/6 
+  Verifying  : mailcap-2.1.31-2.el6.noarch                                                                                                                         5/6 
+  Verifying  : apr-util-1.3.9-3.el6_0.1.x86_64                                                                                                                     6/6 
+
+Installed:
+  httpd.x86_64 0:2.2.15-29.el6.centos                                                                                                                                  
+
+Dependency Installed:
+  apr.x86_64 0:1.3.9-5.el6_2         apr-util.x86_64 0:1.3.9-3.el6_0.1      apr-util-ldap.x86_64 0:1.3.9-3.el6_0.1      httpd-tools.x86_64 0:2.2.15-29.el6.centos     
+  mailcap.noarch 0:2.1.31-2.el6     
+
+Complete!
+[root@ip-10-10-66-84 ec2-user]# 
+/////////////////////////////////////////////////
+[root@group4-15 .euca]# ssh -i sshlogin 172.16.34.126
+The authenticity of host '172.16.34.126 (172.16.34.126)' can't be established.
+RSA key fingerprint is 68:93:f0:13:a1:9f:2a:88:4c:7e:1a:16:1b:91:ca:50.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '172.16.34.126' (RSA) to the list of known hosts.
+Please login as the user "ec2-user" rather than the user "root".
+
+Connection to 172.16.34.126 closed.
+[root@group4-15 .euca]# ssh -i sshlogin ec2-user@172.16.34.126
+[ec2-user@ip-10-10-66-125 ~]$ sudo su
+[root@ip-10-10-66-125 ec2-user]# mkdir ~/yumbackup
+[root@ip-10-10-66-125 ec2-user]# mv /etc/yum.repos.d/* ~/yumbackup
+[root@ip-10-10-66-125 ec2-user]# vim /etc/yum.repos.d/euca.repo
+[root@ip-10-10-66-125 ec2-user]# cat /etc/yum.repos.d/euca.repo
+[euca-local]
+name=Eucalyptus
+baseurl=http://172.16.34.36/euca
+gpgcheck=0
+enabled=1
+
+[root@ip-10-10-66-125 ec2-user]# yum install httpd -y
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+euca-local                                                                                                                                      | 1.3 kB     00:00     
+euca-local/primary                                                                                                                              |  61 kB     00:00     
+euca-local                                                                                                                                                     125/125
+Setting up Install Process
+Resolving Dependencies
+--> Running transaction check
+---> Package httpd.x86_64 0:2.2.15-29.el6.centos will be installed
+--> Processing Dependency: httpd-tools = 2.2.15-29.el6.centos for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Processing Dependency: apr-util-ldap for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Processing Dependency: /etc/mime.types for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Processing Dependency: libaprutil-1.so.0()(64bit) for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Processing Dependency: libapr-1.so.0()(64bit) for package: httpd-2.2.15-29.el6.centos.x86_64
+--> Running transaction check
+---> Package apr.x86_64 0:1.3.9-5.el6_2 will be installed
+---> Package apr-util.x86_64 0:1.3.9-3.el6_0.1 will be installed
+---> Package apr-util-ldap.x86_64 0:1.3.9-3.el6_0.1 will be installed
+---> Package httpd-tools.x86_64 0:2.2.15-29.el6.centos will be installed
+---> Package mailcap.noarch 0:2.1.31-2.el6 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=======================================================================================================================================================================
+ Package                                 Arch                             Version                                           Repository                            Size
+=======================================================================================================================================================================
+Installing:
+ httpd                                   x86_64                           2.2.15-29.el6.centos                              euca-local                           821 k
+Installing for dependencies:
+ apr                                     x86_64                           1.3.9-5.el6_2                                     euca-local                           123 k
+ apr-util                                x86_64                           1.3.9-3.el6_0.1                                   euca-local                            87 k
+ apr-util-ldap                           x86_64                           1.3.9-3.el6_0.1                                   euca-local                            15 k
+ httpd-tools                             x86_64                           2.2.15-29.el6.centos                              euca-local                            73 k
+ mailcap                                 noarch                           2.1.31-2.el6                                      euca-local                            27 k
+
+Transaction Summary
+=======================================================================================================================================================================
+Install       6 Package(s)
+
+Total download size: 1.1 M
+Installed size: 3.6 M
+Downloading Packages:
+(1/6): apr-1.3.9-5.el6_2.x86_64.rpm                                                                                                             | 123 kB     00:00     
+(2/6): apr-util-1.3.9-3.el6_0.1.x86_64.rpm                                                                                                      |  87 kB     00:00     
+(3/6): apr-util-ldap-1.3.9-3.el6_0.1.x86_64.rpm                                                                                                 |  15 kB     00:00     
+(4/6): httpd-2.2.15-29.el6.centos.x86_64.rpm                                                                                                    | 821 kB     00:00     
+(5/6): httpd-tools-2.2.15-29.el6.centos.x86_64.rpm                                                                                              |  73 kB     00:00     
+(6/6): mailcap-2.1.31-2.el6.noarch.rpm                                                                                                          |  27 kB     00:00     
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                   21 MB/s | 1.1 MB     00:00     
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : apr-1.3.9-5.el6_2.x86_64                                                                                                                            1/6 
+  Installing : apr-util-1.3.9-3.el6_0.1.x86_64                                                                                                                     2/6 
+  Installing : apr-util-ldap-1.3.9-3.el6_0.1.x86_64                                                                                                                3/6 
+  Installing : httpd-tools-2.2.15-29.el6.centos.x86_64                                                                                                             4/6 
+  Installing : mailcap-2.1.31-2.el6.noarch                                                                                                                         5/6 
+  Installing : httpd-2.2.15-29.el6.centos.x86_64                                                                                                                   6/6 
+  Verifying  : httpd-2.2.15-29.el6.centos.x86_64                                                                                                                   1/6 
+  Verifying  : apr-util-ldap-1.3.9-3.el6_0.1.x86_64                                                                                                                2/6 
+  Verifying  : httpd-tools-2.2.15-29.el6.centos.x86_64                                                                                                             3/6 
+  Verifying  : apr-1.3.9-5.el6_2.x86_64                                                                                                                            4/6 
+  Verifying  : mailcap-2.1.31-2.el6.noarch                                                                                                                         5/6 
+  Verifying  : apr-util-1.3.9-3.el6_0.1.x86_64                                                                                                                     6/6 
+
+Installed:
+  httpd.x86_64 0:2.2.15-29.el6.centos                                                                                                                                  
+
+Dependency Installed:
+  apr.x86_64 0:1.3.9-5.el6_2         apr-util.x86_64 0:1.3.9-3.el6_0.1      apr-util-ldap.x86_64 0:1.3.9-3.el6_0.1      httpd-tools.x86_64 0:2.2.15-29.el6.centos     
+  mailcap.noarch 0:2.1.31-2.el6     
+
+Complete!
+[root@ip-10-10-66-125 ec2-user]# 
+/////////////////////////////////////////
+[root@group4-15 .euca]# euca-authorize -P tcp -p 80 default
+GROUP	default
+PERMISSION	default	ALLOWS	tcp	80	80	FROM	CIDR	0.0.0.0/0
+[root@group4-15 .euca]# rm admin.zip 
+rm: remove regular file `admin.zip'? y
+[root@group4-15 .euca]# euca-get-credentials admin.zip
+[root@group4-15 .euca]# ls
+admin.zip       deleuca.sh                     euca2-admin-2af2dea5-pk.pem                   eucarc  jssecacerts
+cloud-cert.pem  euca2-admin-2af2dea5-cert.pem  euca-centos6.4-ec2user-2013.07.12-x86_64.tgz  iamrc   sshlogin
+[root@group4-15 .euca]# unzip -o admin.zip 
+Archive:  admin.zip
+To setup the environment run: source /path/to/eucarc
+  inflating: eucarc                  
+  inflating: iamrc                   
+  inflating: cloud-cert.pem          
+  inflating: jssecacerts             
+  inflating: euca2-admin-cb811d75-pk.pem  
+  inflating: euca2-admin-cb811d75-cert.pem  
+[root@group4-15 .euca]# source eucarc 
+[root@group4-15 .euca]# eulb-create-lb -z PARTI00 -l "lb-port=80, protocol=HTTP, instance-port=80, instance-protocol=HTTP" MyLoadBalancer
+DNS_NAME	MyLoadBalancer-943323387200.lb.localhost
+[root@group4-15 .euca]# eulb-register-instances-with-lb --instances i-5C813FFF MyLoadBalancer
+INSTANCE	i-5C813FFF
+[root@group4-15 .euca]# eulb-register-instances-with-lb --instances i-A1363EBE MyLoadBalancer
+INSTANCE	i-A1363EBE
+INSTANCE	i-5C813FFF
+[root@group4-15 .euca]# 
+
+

@@ -1,0 +1,103 @@
+[root@group4-15 .euca]# euca-modify-image-attribute -l -a all emi-4761358C
+launchPermission	emi-4761358C	ADD	Group	all
+root@group4-15 .euca]# cd cse491/
+[root@group4-15 cse491]# cp /home/student/Downloads/euca2-admin-x509.zip /root/.euca/cse491/
+[root@group4-15 cse491]# unzip euca2-admin-x509.zip 
+Archive:  euca2-admin-x509.zip
+To setup the environment run: source /path/to/eucarc
+  inflating: eucarc                  
+  inflating: iamrc                   
+  inflating: cloud-cert.pem          
+  inflating: jssecacerts             
+  inflating: euca2-admin-0cd8c0c5-pk.pem  
+  inflating: euca2-admin-0cd8c0c5-cert.pem  
+[root@group4-15 cse491]# source eucarc 
+[root@group4-15 cse491]# euare-usercreate -u abu && euare-usercreate -u syeda
+euare-userlistgroups: error: argument -u/--user-name is required
+[root@group4-15 cse491]# mkdir abu
+[root@group4-15 cse491]# cd abu/
+[root@group4-15 abu]# cp /home/student/Downloads/euca2-abu-x509.zip /root/.euca/cse491/abu/
+[root@group4-15 abu]# ls
+euca2-abu-x509.zip
+[root@group4-15 abu]# unzip euca2-abu-x509.zip 
+Archive:  euca2-abu-x509.zip
+To setup the environment run: source /path/to/eucarc
+  inflating: eucarc                  
+  inflating: iamrc                   
+  inflating: cloud-cert.pem          
+  inflating: jssecacerts             
+  inflating: euca2-abu-f9a74bca-pk.pem  
+  inflating: euca2-abu-f9a74bca-cert.pem  
+[root@group4-15 abu]# cd ..
+[root@group4-15 cse491]# mkdir syeda
+[root@group4-15 cse491]# cd syeda/
+[root@group4-15 syeda]# cd /home/student/Downloads/euca2-syeda-x509.zip /root/.euca/cse491/syeda/
+bash: cd: /home/student/Downloads/euca2-syeda-x509.zip: Not a directory
+[root@group4-15 syeda]# cp /home/student/Downloads/euca2-syeda-x509.zip /root/.euca/cse491/syeda/
+[root@group4-15 syeda]# ls
+euca2-syeda-x509.zip
+[root@group4-15 syeda]# unzip euca2-syeda-x509.zip 
+Archive:  euca2-syeda-x509.zip
+To setup the environment run: source /path/to/eucarc
+  inflating: eucarc                  
+  inflating: iamrc                   
+  inflating: cloud-cert.pem          
+  inflating: jssecacerts             
+  inflating: euca2-syeda-c7a30cc3-pk.pem  
+  inflating: euca2-syeda-c7a30cc3-cert.pem  
+[root@group4-15 syeda]# cd ..
+[root@group4-15 cse491]# source eucarc 
+[root@group4-15 cse491]# euca-describe-images --all
+IMAGE	emi-4761358C	centos64/euca-centos6.4-ec2user-2013.07.12-x86_64.img.manifest.xml	943323387200	available	public	x86_64	machine	eki-53293377	eri-F48D3664		instance-store	paravirtualized	
+[root@group4-15 cse491]# euca-create-keypair cse491key > cse491key
+[root@group4-15 cse491]# chmod 600 cse491key
+[root@group4-15 cse491]# euca-describe-images --all
+IMAGE	emi-4761358C	centos64/euca-centos6.4-ec2user-2013.07.12-x86_64.img.manifest.xml	943323387200	available	public	x86_64	machine	eki-53293377	eri-F48D3664		instance-store	paravirtualized	
+[root@group4-15 cse491]# euca-run-instances -k cse491key emi-4761358C
+RESERVATION	r-DCA74396	779837066233	default
+INSTANCE	i-50393FBB	emi-4761358C	0.0.0.0	0.0.0.0	pending	cse491key	0		m1.small	2014-03-30T12:13:40.788Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	0.0.0.0	0.0.0.0			instance-store					paravirtualized			
+[root@group4-15 cse491]# euca-describe-instances
+RESERVATION	r-DCA74396	779837066233	default
+INSTANCE	i-50393FBB	emi-4761358C	172.16.34.125	10.10.176.103	pending	cse491key	0		m1.small	2014-03-30T12:13:40.788Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	172.16.34.125	10.10.176.103			instance-store					paravirtualized						
+[root@group4-15 cse491]# euca-describe-instances
+RESERVATION	r-DCA74396	779837066233	default
+INSTANCE	i-50393FBB	emi-4761358C	172.16.34.125	10.10.176.103	running	cse491key	0		m1.small	2014-03-30T12:13:40.788Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	172.16.34.125	10.10.176.103			instance-store					paravirtualized						
+[root@group4-15 cse491]# cd abu/
+[root@group4-15 abu]# source eucarc 
+[root@group4-15 abu]# euca-describe-images --all
+[root@group4-15 abu]# cd ..
+[root@group4-15 cse491]# cd syeda/
+[root@group4-15 syeda]# source eucarc 
+[root@group4-15 syeda]# euca-describe-images --all
+[root@group4-15 syeda]# cd ..
+[root@group4-15 cse491]# euare-useraddpolicy -u abu -p mypolicy -e Allow -a '*' -r '*'
+euare-useraddpolicy: error (NotAuthorized): Not authorized to put user policy for abu by syeda
+[root@group4-15 cse491]# source eucarc 
+[root@group4-15 cse491]# euare-useraddpolicy -u abu -p mypolicy -e Allow -a '*' -r '*'
+[root@group4-15 cse491]# euare-useraddpolicy -u syeda -p mypolicy -e Allow -a '*' -r '*'
+[root@group4-15 cse491]# cd abu/
+[root@group4-15 abu]# source eucarc 
+[root@group4-15 abu]# euca-run-instances -k cse491key emi-4761358C
+RESERVATION	r-A72140B0	779837066233	default
+INSTANCE	i-5356447F	emi-4761358C	0.0.0.0	0.0.0.0	pending	cse491key	0		m1.small	2014-03-30T12:21:04.896Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	0.0.0.0	0.0.0.0			instance-store					paravirtualized			
+[root@group4-15 abu]# euca-describe-instances
+RESERVATION	r-A72140B0	779837066233	default
+INSTANCE	i-5356447F	emi-4761358C	172.16.34.127	10.10.176.118	pending	cse491key	0		m1.small	2014-03-30T12:21:04.896Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	172.16.34.127	10.10.176.118			instance-store					paravirtualized						
+RESERVATION	r-DCA74396	779837066233	default
+INSTANCE	i-50393FBB	emi-4761358C	172.16.34.125	10.10.176.103	running	cse491key	0		m1.small	2014-03-30T12:13:40.788Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	172.16.34.125	10.10.176.103			instance-store					paravirtualized						
+[root@group4-15 abu]# cd ..
+[root@group4-15 cse491]# cd syeda/
+[root@group4-15 syeda]# source eucarc 
+[root@group4-15 syeda]# euca-run-instances -k cse491key emi-4761358C
+RESERVATION	r-C14E3F17	779837066233	default
+INSTANCE	i-795E426E	emi-4761358C	0.0.0.0	0.0.0.0	pending	cse491key	0		m1.small	2014-03-30T12:22:59.405Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	0.0.0.0	0.0.0.0			instance-store					paravirtualized			
+[root@group4-15 syeda]# euca-describe-instances
+RESERVATION	r-A72140B0	779837066233	default
+INSTANCE	i-5356447F	emi-4761358C	172.16.34.127	10.10.176.118	running	cse491key	0		m1.small	2014-03-30T12:21:04.896Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	172.16.34.127	10.10.176.118			instance-store					paravirtualized						
+RESERVATION	r-DCA74396	779837066233	default
+INSTANCE	i-50393FBB	emi-4761358C	172.16.34.125	10.10.176.103	running	cse491key	0		m1.small	2014-03-30T12:13:40.788Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	172.16.34.125	10.10.176.103			instance-store					paravirtualized						
+RESERVATION	r-C14E3F17	779837066233	default
+INSTANCE	i-795E426E	emi-4761358C	172.16.34.129	10.10.176.91	running	cse491key	0		m1.small	2014-03-30T12:22:59.405Z	PARTI00	eki-53293377	eri-F48D3664		monitoring-disabled	172.16.34.129	10.10.176.91			instance-store					paravirtualized						
+[root@group4-15 syeda]# 
+
+
